@@ -1,0 +1,5 @@
+﻿struct Transform {
+	Vector pos; // position of entity in 3D space
+	Vector rot; // rotation of entity in ZYX Euler Angles
+	Vector scale; // scale of entity
+}

@@ -37,6 +37,13 @@
     <Reference Include="FiVESMath">
       <HintPath>..\Libs\FiVESMath.dll</HintPath>
     </Reference>
+    <Reference Include="KIARA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\KIARA.dll</HintPath>
+    </Reference>
+    <Reference Include="KIARAPlugin">
+      <HintPath>..\Libs\KIARAPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="PluginManager">
       <HintPath>..\Libs\PluginManager.dll</HintPath>
     </Reference>
@@ -52,6 +59,11 @@
     <Compile Include="Transform.cs" />
     <Compile Include="WTComponentsPluginInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tundraComponents.kiara">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

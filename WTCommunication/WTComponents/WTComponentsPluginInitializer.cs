@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FIVES;
+using System.IO;
 
 namespace WTComponentsPlugin
 {
@@ -17,6 +18,7 @@ namespace WTComponentsPlugin
         public void Initialize()
         {
             RegisterBaseComponents();
+            ReadIDL();
         }
 
         public string Name
@@ -26,7 +28,10 @@ namespace WTComponentsPlugin
 
         public List<string> PluginDependencies
         {
-            get { return new List<string>(); }
+
+            get { return new List<string>{
+                "KIARAPlugin" // For amending KIARA IDL with definition of Transforsm struct
+            }; }
         }
 
         public void Shutdown()
@@ -73,5 +78,11 @@ namespace WTComponentsPlugin
             ComponentRegistry.Instance.Register(mesh);
         }
         #endregion
+
+        private void ReadIDL()
+        {
+            string idlContent = File.ReadAllText("tundraComponents.kiara");
+            KIARAPlugin.KIARAServerManager.Instance.KiaraServer.AmendIDL(idlContent);
+        }
     }
 }
