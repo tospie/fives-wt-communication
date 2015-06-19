@@ -31,8 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClientManager">
+      <HintPath>..\Libs\ClientManager.dll</HintPath>
+    </Reference>
+    <Reference Include="DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DomainModel.dll</HintPath>
+    </Reference>
     <Reference Include="KIARA">
       <HintPath>..\Libs\KIARA.dll</HintPath>
+    </Reference>
+    <Reference Include="KIARAPlugin">
+      <HintPath>..\Libs\KIARAPlugin.dll</HintPath>
     </Reference>
     <Reference Include="PluginManager">
       <HintPath>..\Libs\PluginManager.dll</HintPath>
@@ -46,11 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginReply.cs" />
     <Compile Include="WTCommunicationPluginInitalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="tundraCommunication.kiara" />
+    <None Include="tundraCommunication.kiara">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
