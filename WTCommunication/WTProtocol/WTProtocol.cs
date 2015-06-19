@@ -11,7 +11,7 @@ namespace WTProtocol
     {
         public IMessage DeserializeMessage(object message)
         {
-            throw new NotImplementedException();
+            return Deserializer.Deserialize((string)message);
         }
 
         public string MimeType
@@ -21,12 +21,15 @@ namespace WTProtocol
 
         public string Name
         {
-            get { throw new NotImplementedException(); }
+            get { return "wt-websocket"; }
         }
 
         public object SerializeMessage(IMessage message)
         {
-            throw new NotImplementedException();
+            return Serializer.SerializeMessage(message);
         }
+
+        private WTSerializer Serializer = new WTSerializer();
+        private WTDeserializer Deserializer = new WTDeserializer();
     }
 }
