@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DomainModel">
+      <HintPath>..\Libs\DomainModel.dll</HintPath>
+    </Reference>
+    <Reference Include="FiVESMath">
+      <HintPath>..\Libs\FiVESMath.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginManager">
+      <HintPath>..\Libs\PluginManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Transform.cs" />
     <Compile Include="WTComponentsPluginInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

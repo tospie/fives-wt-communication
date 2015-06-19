@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTCommunication", "WTCommun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTProtocol", "WTProtocol\WTProtocol.csproj", "{EF874932-475A-44D7-B0F5-B528DA016BA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTComponents", "WTComponents\WTComponents.csproj", "{3ADF65F8-2298-47B5-842D-0398F313463E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF874932-475A-44D7-B0F5-B528DA016BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF874932-475A-44D7-B0F5-B528DA016BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF874932-475A-44D7-B0F5-B528DA016BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ADF65F8-2298-47B5-842D-0398F313463E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ADF65F8-2298-47B5-842D-0398F313463E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ADF65F8-2298-47B5-842D-0398F313463E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ADF65F8-2298-47B5-842D-0398F313463E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

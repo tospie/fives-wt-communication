@@ -11,27 +11,67 @@ namespace WTComponentsPlugin
     {
         public List<string> ComponentDependencies
         {
-            get { throw new NotImplementedException(); }
+            get { return new List<string>(); }
         }
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            RegisterBaseComponents();
         }
 
         public string Name
         {
-            get { throw new NotImplementedException(); }
+            get { return "WebTundraComponents"; }
         }
 
         public List<string> PluginDependencies
         {
-            get { throw new NotImplementedException(); }
+            get { return new List<string>(); }
         }
 
         public void Shutdown()
         {
-            throw new NotImplementedException();
         }
+
+        private void RegisterBaseComponents()
+        {
+            RegisterPlaceableComponent();
+            RegisterMeshComponent();
+            RegisterAvatarComponent();
+        }
+
+        #region Component Definitions
+        private void RegisterAvatarComponent()
+        {
+            ComponentDefinition avatarComponent = new ComponentDefinition("avatar");
+            avatarComponent.AddAttribute<string>("appearanceRef");
+            ComponentRegistry.Instance.Register(avatarComponent);
+        }
+
+        private void RegisterPlaceableComponent()
+        {
+            ComponentDefinition placeable = new ComponentDefinition("placeable");
+            placeable.AddAttribute<Transform>("transform");
+            placeable.AddAttribute<bool>("drawDebug");
+            placeable.AddAttribute<bool>("visible");
+            placeable.AddAttribute<int>("selectionLayer");
+            placeable.AddAttribute<Guid>("parentRef");
+            placeable.AddAttribute<string>("parentBone");
+            ComponentRegistry.Instance.Register(placeable);
+        }
+
+        private void RegisterMeshComponent()
+        {
+            ComponentDefinition mesh = new ComponentDefinition("mesh");
+            mesh.AddAttribute<Transform>("nodeTransformation");
+            mesh.AddAttribute<string>("meshRef");
+            mesh.AddAttribute<string>("skeletonRef");
+            mesh.AddAttribute<List<string>>("materialRefs");
+            mesh.AddAttribute<float>("drawDistance");
+            mesh.AddAttribute<bool>("castShadows");
+            mesh.AddAttribute<bool>("useInstancing");
+            ComponentRegistry.Instance.Register(mesh);
+        }
+        #endregion
     }
 }
