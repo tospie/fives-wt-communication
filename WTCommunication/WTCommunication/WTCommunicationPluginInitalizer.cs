@@ -7,7 +7,7 @@ using FIVES;
 using System.IO;
 using ClientManagerPlugin;
 
-namespace WTCommunication
+namespace WTCommunicationPlugin
 {
     public class WTCommunicationPluginInitalizer : IPluginInitializer
     {
