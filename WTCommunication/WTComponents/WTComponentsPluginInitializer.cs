@@ -30,7 +30,7 @@ namespace WTComponentsPlugin
         {
 
             get { return new List<string>{
-                "KIARAPlugin" // For amending KIARA IDL with definition of Transforsm struct
+                "KIARA" // For amending KIARA IDL with definition of Transforsm struct
             }; }
         }
 
