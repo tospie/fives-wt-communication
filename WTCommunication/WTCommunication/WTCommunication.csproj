@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KIARA">
+      <HintPath>..\Libs\KIARA.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginManager">
+      <HintPath>..\Libs\PluginManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
