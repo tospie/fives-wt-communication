@@ -1,9 +1,10 @@
 ﻿struct LoginReply {
-	bool success;
-	string connectionID;
-	string loginReply;
+	boolean Success;
+	string ConnectionID;
+	string ReplyData;
 }
 
 service tundra {
+	LoginReply login(string loginProperties);
 	void editAttributes(string entityGuid, string componentName, string attributeName, any newValue);
 }

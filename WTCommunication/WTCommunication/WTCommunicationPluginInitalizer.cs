@@ -19,6 +19,7 @@ namespace WTCommunicationPlugin
         public void Initialize()
         {
             LoadIdl();
+            RegisterService();
         }
 
         public string Name
@@ -33,7 +34,7 @@ namespace WTCommunicationPlugin
                 return new List<string>
                 {
                     "WebTundraComponents",  // Needed to load all WT specific components and IDL
-                    "KIARAPlugin",          // Needed for tundra communication service definition
+                    "KIARA",          // Needed for tundra communication service definition
                     "ClientManager"         // Needed for service registration and binding
                 };
             }
@@ -51,10 +52,20 @@ namespace WTCommunicationPlugin
 
         private void RegisterService()
         {
-            ClientManager.Instance.RegisterClientService("tundra", true, new Dictionary<string, Delegate>
+            ClientManager.Instance.RegisterClientService("tundra", false, new Dictionary<string, Delegate>
             {
+                {"login", (Func<string, LoginReply>)Login},
                 {"editAttributes", (Action<string, string, string, object>)EditAttributes}
             });
+        }
+
+        private LoginReply Login(string loginProperties)
+        {
+            return new LoginReply {
+                Success = true,
+                ConnectionID = Guid.NewGuid().ToString(),
+                ReplyData = ""
+            };
         }
 
         private void EditAttributes(string entityGuid, string componentName, string attributeName, object value)
