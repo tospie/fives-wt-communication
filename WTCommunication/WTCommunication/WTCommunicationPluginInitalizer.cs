@@ -64,7 +64,7 @@ namespace WTCommunicationPlugin
             return new LoginReply {
                 Success = true,
                 ConnectionID = NumConnectedClients++,
-                ReplyData = ""
+                ReplyData = "[]"
             };
         }
 
