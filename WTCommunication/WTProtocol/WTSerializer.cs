@@ -73,6 +73,13 @@ namespace WTProtocol
             AddValue((string)reply["ConnectionID"]);
             AddValue((UInt16)0);
             AddValue("");
+
+        private void AddValue(byte value)
+        {
+            using (var ms = new MemoryStream())
+            {
+                writer.Write(value);
+            }
         }
 
         private void AddValue(UInt16 value)
