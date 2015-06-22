@@ -75,5 +75,21 @@ namespace WTProtocol
             return result;
         }
 
+        private object ReadVLE()
+        {
+            int low = ReadByte();
+            if ((low & 0x80) == null)
+                return low;
+
+            low = low & 0x7f;
+            int med = ReadByte();
+            if ((med & 0x80) == 0)
+                return low | (med << 7);
+
+            med = med & 0x7f;
+            var high = ReadUInt16();
+            return low | (med << 7) | (high << 14);
+        }
+
     }
 }
