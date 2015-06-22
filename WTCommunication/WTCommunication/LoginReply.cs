@@ -8,7 +8,7 @@ namespace WTCommunicationPlugin
     public struct LoginReply
     {
         public bool Success;
-        public string ConnectionID;
+        public UInt32 ConnectionID;
         public string ReplyData;
     }
 }

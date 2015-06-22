@@ -69,10 +69,13 @@ namespace WTProtocol
         {
             Dictionary<string, object> reply = (Dictionary<string, object>)currentMessage.Result;
             byte success = (bool)reply["Success"] ? (byte)1 : (byte)0;
-            AddValue(success);
-            AddValue((string)reply["ConnectionID"]);
-            AddValue((UInt16)0);
-            AddValue("");
+            AddValue((byte)success);
+            AddVLEValue((UInt32)reply["ConnectionID"]);
+            string replyData = (string)(reply["ReplyData"]);
+            AddValue((UInt16)(replyData.Length));
+            AddValue(replyData);
+        }
+
         private void AddVLEValue(UInt32 value)
         {
             if (value < 0x80)

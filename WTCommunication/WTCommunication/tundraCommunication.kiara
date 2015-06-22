@@ -1,6 +1,6 @@
 ﻿struct LoginReply {
 	boolean Success;
-	string ConnectionID;
+	u32 ConnectionID;
 	string ReplyData;
 }
 

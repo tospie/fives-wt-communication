@@ -63,7 +63,7 @@ namespace WTCommunicationPlugin
         {
             return new LoginReply {
                 Success = true,
-                ConnectionID = Guid.NewGuid().ToString(),
+                ConnectionID = NumConnectedClients++,
                 ReplyData = ""
             };
         }
@@ -73,5 +73,7 @@ namespace WTCommunicationPlugin
             Entity entity = World.Instance.FindEntity(entityGuid);
             entity[componentName][attributeName].Suggest(value);
         }
+
+        private UInt32 NumConnectedClients = 0;
     }
 }
