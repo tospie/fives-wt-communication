@@ -45,6 +45,12 @@ namespace WTProtocol
             }
         }
 
+        private void DeserializeLoginMessage()
+        {
+            UInt16 stringLength = ReadUInt16();
+            string loginProperties = ReadString(stringLength);
+            deserializedMessage.Parameters.Add(loginProperties);
+        }
         private byte[] GetBytes(string str)
         {
             byte[] bytes = new byte[str.Length * sizeof(char)];
@@ -52,11 +58,11 @@ namespace WTProtocol
             return bytes;
         }
 
-        private void DeserializeLoginMessage()
+        private byte ReadByte()
         {
-            UInt16 stringLength = ReadUInt16();
-            string loginProperties = ReadString(stringLength);
-            deserializedMessage.Parameters.Add(loginProperties);
+            byte value = currentInputStream[byteIndex];
+            byteIndex++;
+            return value;
         }
 
         private UInt16 ReadUInt16()
