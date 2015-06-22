@@ -73,6 +73,24 @@ namespace WTProtocol
             AddValue((string)reply["ConnectionID"]);
             AddValue((UInt16)0);
             AddValue("");
+        private void AddVLEValue(UInt32 value)
+        {
+            if (value < 0x80)
+            {
+                AddValue((byte)value);
+            }
+            else if (value < 0x4000)
+            {
+                AddValue((byte)(value & 0x7f | 0x80));
+                AddValue((byte)(value >> 7));
+            }
+            else
+            {
+                AddValue((byte)(value & 0x7f | 0x80));
+                AddValue((byte)(((value >> 7) & 0x7f) | 0x80));
+                AddValue((UInt16)(value >> 14));
+            }
+        }
 
         private void AddValue(byte value)
         {
