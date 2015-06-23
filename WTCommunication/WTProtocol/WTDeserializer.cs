@@ -8,23 +8,18 @@ using System.Text;
 
 namespace WTProtocol
 {
-    internal class WTDeserializer
+    public class WTDeserializer : DataDeserializer
     {
-        byte[] currentInputStream;
         MessageBase deserializedMessage;
         UInt16 currentMessageType;
 
-        int byteIndex = 0;
+        public WTDeserializer(byte[] inputStream) : base(inputStream) {}
 
-        public IMessage Deserialize(string stream)
+        public override void Deserialize(ref MessageBase deserializedMessage)
         {
-            deserializedMessage = new MessageBase();
-            deserializedMessage.Parameters = new List<object>();
-            currentInputStream = System.Text.Encoding.UTF8.GetBytes(stream);
-            byteIndex = 0;
+            this.deserializedMessage = deserializedMessage;
             ReadMessageID();
             ProcessBody();
-            return deserializedMessage;
         }
 
         private void ReadMessageID()
@@ -54,44 +49,9 @@ namespace WTProtocol
         {
         }
 
-        private byte ReadByte()
-        {
-            byte value = currentInputStream[byteIndex];
-            byteIndex++;
-            return value;
         }
 
-        private UInt16 ReadUInt16()
         {
-            UInt16 result = BitConverter.ToUInt16(currentInputStream, byteIndex);
-            byteIndex += 2;
-            return result;
         }
-
-        private string ReadString(UInt16 length)
-        {
-            byte[] byteValue = new byte[length];
-            Array.Copy(currentInputStream, byteIndex, byteValue, 0, length);
-            string result = System.Text.Encoding.UTF8.GetString(byteValue);
-            byteIndex += length;
-            return result;
-        }
-
-        private object ReadVLE()
-        {
-            int low = ReadByte();
-            if ((low & 0x80) == null)
-                return low;
-
-            low = low & 0x7f;
-            int med = ReadByte();
-            if ((med & 0x80) == 0)
-                return low | (med << 7);
-
-            med = med & 0x7f;
-            var high = ReadUInt16();
-            return low | (med << 7) | (high << 14);
-        }
-
     }
 }

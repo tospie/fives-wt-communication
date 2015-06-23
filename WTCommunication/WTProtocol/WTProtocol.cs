@@ -11,7 +11,10 @@ namespace WTProtocol
     {
         public IMessage DeserializeMessage(object message)
         {
-            return Deserializer.Deserialize((string)message);
+            MessageBase deserializedMessage = new MessageBase();
+            deserializedMessage.Parameters = new List<object>();
+            new WTDeserializer((byte[])message).Deserialize(ref deserializedMessage);
+            return deserializedMessage;
         }
 
         public string MimeType
@@ -30,6 +33,5 @@ namespace WTProtocol
         }
 
         private WTSerializer Serializer = new WTSerializer();
-        private WTDeserializer Deserializer = new WTDeserializer();
     }
 }
