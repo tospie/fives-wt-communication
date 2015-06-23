@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataDeserializer.cs" />
+    <Compile Include="LoginMessageDeserializer.cs" />
     <Compile Include="WTDeserializer.cs" />
     <Compile Include="WTProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,20 +34,18 @@ namespace WTProtocol
 
         private void ProcessBody()
         {
+            int bodyLength = currentInputStream.Length - byteIndex;
+            byte[] bodyBytes = new byte[bodyLength];
+            Array.Copy(currentInputStream, byteIndex, bodyBytes, 0, bodyLength);
             switch (currentMessageType)
             {
-                case 100: deserializedMessage.Type = MessageType.REQUEST; DeserializeLoginMessage(); break;
+                case 100: deserializedMessage.Type = MessageType.REQUEST;
+                          new LoginMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
+                          break;
             }
         }
 
-        private void DeserializeLoginMessage()
         {
-            UInt16 stringLength = ReadUInt16();
-            string loginProperties = ReadString(stringLength);
-            deserializedMessage.Parameters.Add(loginProperties);
-        }
-        {
-        }
 
         }
 
