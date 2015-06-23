@@ -29,6 +29,7 @@ namespace WTProtocol
             switch (messageID)
             {
                 case 100: deserializedMessage.MethodName = "tundra.login"; break;
+                case 110: deserializedMessage.MethodName = "clientsync.receiveNewObjects"; break;
             }
         }
 
@@ -42,6 +43,9 @@ namespace WTProtocol
                 case 100: deserializedMessage.Type = MessageType.REQUEST;
                           new LoginMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
                           break;
+                case 110: deserializedMessage.Type = MessageType.REQUEST;
+                           new CreateEntityMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
+                           break;
             }
         }
 
