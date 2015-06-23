@@ -46,6 +46,7 @@
     <Compile Include="CreateEntityMessageDeserializer.cs" />
     <Compile Include="DataDeserializer.cs" />
     <Compile Include="LoginMessageDeserializer.cs" />
+    <Compile Include="TundraComponent.cs" />
     <Compile Include="WTDeserializer.cs" />
     <Compile Include="WTProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
