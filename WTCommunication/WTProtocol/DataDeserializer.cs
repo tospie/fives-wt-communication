@@ -24,6 +24,16 @@ namespace WTProtocol
         }
 
         /// <summary>
+
+        /// <summary>
+        /// Reads the next byte and returns it as bool value. False vor 0, True for any value larger 0
+        /// </summary>
+        /// <returns>Value as Bool</returns>
+        protected bool ReadBool()
+        {
+            return ReadByte() > 0;
+        }
+
         /// <summary>
         /// Reads the next byte from the input stream and returns the value as unsigned 8 bit integer.
         /// </summary>
