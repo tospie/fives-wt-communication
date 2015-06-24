@@ -57,6 +57,17 @@ namespace WTProtocol
             return result;
         }
 
+        /// <summary>
+        /// Reads the next four bytes from the input stream and returns them as 32 bit signed single precision
+        /// floating point value
+        /// </summary>
+        /// <returns>Bytes as 32 bit single precision float</returns>
+        protected float ReadFloat()
+        {
+            float result = BitConverter.ToSingle(currentInputStream, byteIndex);
+            byteIndex += 4;
+            return result;
+        }
 
         /// <summary>
         /// Reads a string from the input stream. For that, it first reads a single byte that encodes the
