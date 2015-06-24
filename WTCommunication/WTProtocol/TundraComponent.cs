@@ -18,7 +18,7 @@ namespace WTProtocol
         {
             new TundraComponent{ID = 1, Name = "avatar"},
             new TundraComponent{ID = 17, Name = "mesh",
-                Attributes = {
+                Attributes = new List<string>{
                     "transform", "assetReference", "assetReference", "assetReferenceList", "real", "bool", "bool"
                 }
             },
