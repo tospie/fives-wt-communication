@@ -44,6 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeDeserializer.cs" />
+    <Compile Include="AttributeTypes\AssetReference.cs" />
+    <Compile Include="AttributeTypes\AssetReferenceList.cs" />
+    <Compile Include="AttributeTypes\AttributeTypeDeserializer.cs" />
+    <Compile Include="AttributeTypes\Bool.cs" />
+    <Compile Include="AttributeTypes\Transform.cs" />
+    <Compile Include="ComponentDeserializer.cs" />
     <Compile Include="CreateEntityMessageDeserializer.cs" />
     <Compile Include="DataDeserializer.cs" />
     <Compile Include="LoginMessageDeserializer.cs" />
