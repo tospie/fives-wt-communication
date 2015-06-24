@@ -9,6 +9,7 @@ namespace WTProtocol
     {
         public int ID;
         public string Name;
+        public List<string> Attributes;
     }
 
     public static class ComponentMap
@@ -16,7 +17,11 @@ namespace WTProtocol
         public static List<TundraComponent> Components = new List<TundraComponent>
         {
             new TundraComponent{ID = 1, Name = "avatar"},
-            new TundraComponent{ID = 17, Name = "mesh"},
+            new TundraComponent{ID = 17, Name = "mesh",
+                Attributes = {
+                    "transform", "assetReference", "assetReference", "assetReferenceList", "real", "bool", "bool"
+                }
+            },
             new TundraComponent{ID = 20, Name = "placeable"}
         };
     }
