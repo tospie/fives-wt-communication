@@ -35,9 +35,7 @@ namespace WTProtocol
 
         private void ProcessBody()
         {
-            int bodyLength = currentInputStream.Length - byteIndex;
-            byte[] bodyBytes = new byte[bodyLength];
-            Array.Copy(currentInputStream, byteIndex, bodyBytes, 0, bodyLength);
+            byte[] bodyBytes = GetRemainingBytes();
             switch (currentMessageType)
             {
                 case 100: deserializedMessage.Type = MessageType.REQUEST;
@@ -47,13 +45,6 @@ namespace WTProtocol
                            new CreateEntityMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
                            break;
             }
-        }
-
-        {
-
-        }
-
-        {
         }
     }
 }
