@@ -7,7 +7,7 @@ namespace WTProtocol.AttributeTypes
 {
     public class AssetReference : AttributeTypeDeserializer
     {
-        public AssetReference(byte[] inputStream, int byteIndex) : base(inputStream, ref byteIndex) { }
+        public AssetReference(byte[] inputStream, ref int byteIndex) : base(inputStream, ref byteIndex) { }
 
         public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
         {

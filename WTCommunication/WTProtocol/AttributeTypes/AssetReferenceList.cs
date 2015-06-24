@@ -16,7 +16,7 @@ namespace WTProtocol.AttributeTypes
             byte numberOfReferences = ReadByte();
             for (byte n = 0; n < numberOfReferences; n++)
             {
-                references.Add(new AssetReference(currentInputStream, byteIndex));
+                references.Add(new AssetReference(currentInputStream, ref byteIndex));
             }
 
             return references;
