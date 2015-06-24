@@ -24,6 +24,17 @@ namespace WTProtocol
         }
 
         /// <summary>
+        /// Truncates the input byte stream to the remaining bytes that were not yet processed. Used to pass
+        /// remaining bytes of a message to a deserializer subclass
+        /// </summary>
+        /// <returns>Remaining bytes that were not yet handled by the current deserializer</returns>
+        protected byte[] GetRemainingBytes()
+        {
+            int blockLength = currentInputStream.Length - byteIndex;
+            byte[] blockBytes = new byte[blockLength];
+            Array.Copy(currentInputStream, byteIndex, blockBytes, 0, blockLength);
+            return blockBytes;
+        }
 
         /// <summary>
         /// Reads the next byte and returns it as bool value. False vor 0, True for any value larger 0
