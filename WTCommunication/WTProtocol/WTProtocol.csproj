@@ -48,6 +48,7 @@
     <Compile Include="AttributeTypes\AssetReferenceList.cs" />
     <Compile Include="AttributeTypes\AttributeTypeDeserializer.cs" />
     <Compile Include="AttributeTypes\Bool.cs" />
+    <Compile Include="AttributeTypes\Real.cs" />
     <Compile Include="AttributeTypes\Transform.cs" />
     <Compile Include="ComponentDeserializer.cs" />
     <Compile Include="CreateEntityMessageDeserializer.cs" />
