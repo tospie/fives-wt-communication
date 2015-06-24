@@ -31,7 +31,7 @@ namespace WTProtocol
                 byte[] attributeDataBlock = new byte[attributeDataBlockSize];
                 Array.Copy(currentInputStream, byteIndex, attributeDataBlock, 0, attributeDataBlockSize);
                 Dictionary<string, object> attributes =
-                    new AttributeDeserializer(attributeDataBlock).DeserializeAttributes();
+                    new AttributeDeserializer(attributeDataBlock).DeserializeAttributes(componentTypeName);
                 components.Add(componentTypeName, attributes);
             }
             return components;

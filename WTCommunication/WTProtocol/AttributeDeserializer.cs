@@ -16,9 +16,19 @@ namespace WTProtocol
                 Use deserialization to attributes object instead");
         }
 
-        public Dictionary<string, object> DeserializeAttributes()
+        public Dictionary<string, object> DeserializeAttributes(string componentName)
         {
             Dictionary<string, object> attributes = new Dictionary<string, object>();
+            TundraComponent component = ComponentMap.Components.Single(c => c.Name == componentName);
+            List<string> attributeTypeNames = component.Attributes;
+            for (int i = 0; i < attributeTypeNames.Count; i++)
+            {
+                string attributeName = attributeTypeNames[i];
+                var attributeValue =
+                    AttributeTypeDeserializerFactory
+                    .GetDeserializer(attributeName, currentInputStream, ref byteIndex)
+                    .Deserialize();
+            }
             return attributes;
         }
     }
