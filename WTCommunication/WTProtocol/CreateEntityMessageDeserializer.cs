@@ -19,8 +19,8 @@ namespace WTProtocol
             Dictionary<string, object> entityInfo = new ComponentDeserializer(componentBytes).Deserialize();
 
             // This is an attempt to convert the Tundra int IDs to the FiVES GUID format
-            entityInfo["guid"] = new Guid(entityID, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-            entityInfo["owner"] = new Guid();
+            entityInfo["guid"] = new Guid(entityID, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).ToString();
+            entityInfo["owner"] = new Guid().ToString();
             deserializedMessage.Parameters.Add(entityInfo);
         }
     }
