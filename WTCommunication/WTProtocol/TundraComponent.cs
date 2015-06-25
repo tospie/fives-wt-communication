@@ -5,24 +5,39 @@ using System.Text;
 
 namespace WTProtocol
 {
-    public struct TundraComponent
+    public class TundraComponent
     {
-        public int ID;
-        public string Name;
-        public List<string> Attributes;
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public List<TundraAttribute> Attributes { get; private set; }
+
+        public TundraComponent(int id, string name)
+        {
+            ID = id;
+            Name = name;
+            Attributes = new List<TundraAttribute>();
+        }
+
+        public void AddAttribute(string name, int typeId)
+        {
+            TundraAttributeType attributeType = AttributeMap.Attributes.Single(a => a.ID == typeId);
+            Attributes.Add(new TundraAttribute(name, attributeType));
+        }
+
+        public void AddAttribute(string name, string typeName)
+        {
+            TundraAttributeType attributeType = AttributeMap.Attributes.Single(a => a.Name == typeName);
+            Attributes.Add(new TundraAttribute(name, attributeType));
+        }
     }
 
     public static class ComponentMap
     {
         public static List<TundraComponent> Components = new List<TundraComponent>
         {
-            new TundraComponent{ID = 1, Name = "avatar"},
-            new TundraComponent{ID = 17, Name = "mesh",
-                Attributes = new List<string>{
-                    "transform", "assetReference", "assetReference", "assetReferenceList", "real", "bool", "bool"
-                }
-            },
-            new TundraComponent{ID = 20, Name = "placeable"}
+            new TundraComponent(1, "avatar"),
+            new TundraComponent(17, "mesh"),
+            new TundraComponent(20, "placeable")
         };
     }
 }
