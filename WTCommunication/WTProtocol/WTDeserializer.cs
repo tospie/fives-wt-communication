@@ -42,7 +42,7 @@ namespace WTProtocol
             switch (messageID)
             {
                 case 100: deserializedMessage.MethodName = "tundra.login"; break;
-                case 110: deserializedMessage.MethodName = "clientsync.receiveNewObjects"; break;
+                case 110: deserializedMessage.MethodName = "objectsync.receiveNewObjects"; break;
             }
         }
 
