@@ -71,7 +71,7 @@ namespace WTComponentsPlugin
             mesh.AddAttribute<Transform>("nodeTransformation");
             mesh.AddAttribute<string>("meshRef");
             mesh.AddAttribute<string>("skeletonRef");
-            mesh.AddAttribute<List<string>>("materialRefs");
+            mesh.AddAttribute<List<object>>("materialRefs");
             mesh.AddAttribute<float>("drawDistance");
             mesh.AddAttribute<bool>("castShadows");
             mesh.AddAttribute<bool>("useInstancing");
