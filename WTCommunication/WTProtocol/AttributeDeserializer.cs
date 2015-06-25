@@ -26,8 +26,8 @@ namespace WTProtocol
                 string attributeName = attributeTypeNames[i];
                 var attributeValue =
                     AttributeTypeDeserializerFactory
-                    .GetDeserializer(attributeName, currentInputStream, ref byteIndex)
-                    .Deserialize();
+                    .GetDeserializer(attributeName, currentInputStream, byteIndex)
+                    .Deserialize(ref byteIndex);
             }
             return attributes;
         }
