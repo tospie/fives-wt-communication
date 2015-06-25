@@ -5,7 +5,8 @@ using System.Text;
 
 namespace WTProtocol
 {
-    public struct TundraAttribute
+
+    public struct TundraAttributeType
     {
         public int ID;
         public string Name;
@@ -13,11 +14,28 @@ namespace WTProtocol
 
     public static class AttributeMap
     {
-        public static List<TundraAttribute> Attributes = new List<TundraAttribute>
+        public static List<TundraAttributeType> Attributes = new List<TundraAttributeType>
         {
-            new TundraAttribute{ID = 1, Name = "avatar"},
-            new TundraAttribute{ID = 17, Name = "mesh"},
-            new TundraAttribute{ID = 20, Name = "placeable"}
+            new TundraAttributeType{ID = 1, Name = "string"},
+            new TundraAttributeType{ID = 2, Name = "int"},
+            new TundraAttributeType{ID = 3, Name = "real"},
+            /*
+             * TYPES 4 - 7 NOT ADDED YET
+             */
+            new TundraAttributeType{ID = 8, Name = "bool"},
+            /*
+             * TYPES 9 & 10 NOT ADDED YET
+             */
+            new TundraAttributeType{ID = 11, Name = "assetReference"},
+            new TundraAttributeType{ID = 12, Name = "assetReferenceList"},
+            new TundraAttributeType{ID = 13, Name = "entityReference"},
+            /*
+             * TYPES 14 & 15 NOT ADDED YET
+             */
+            new TundraAttributeType{ID = 16, Name = "transform"}
+            /*
+             * TYPES 16 NOT ADDED YET
+             */
         };
     }
 }
