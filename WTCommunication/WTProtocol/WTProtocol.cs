@@ -7,8 +7,18 @@ using System.Threading.Tasks;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Implements parts of the Tundra protocol as defined at
+    /// https://github.com/realXtend/tundra/wiki/Tundra-protocol#attribute-types-and-their-binary-encodings .
+    /// as SINFONI protocol module.
+    /// </summary>
     public class WTProtocol : IProtocol
     {
+        /// <summary>
+        /// Deserializes an incoming byte stream to a SINFONI message object.
+        /// </summary>
+        /// <param name="message">Incoming byte stream</param>
+        /// <returns>SINFONI message object that contains incoming data</returns>
         public IMessage DeserializeMessage(object message)
         {
             MessageBase deserializedMessage = new MessageBase();

@@ -5,10 +5,18 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Used to deserialize information about a component that was received with a messag
+    /// </summary>
     public class ComponentDeserializer : DataDeserializer
     {
         public ComponentDeserializer(byte[] inputStream) : base(inputStream) { }
 
+        /// <summary>
+        /// Deserializes the received components data block to a component object that contains information about the
+        /// component names, attached attributes and current attribute values
+        /// </summary>
+        /// <returns>A map from component names to components</returns>
         public Dictionary<string, object> Deserialize()
         {
             Dictionary<string, object> components = new Dictionary<string, object>();

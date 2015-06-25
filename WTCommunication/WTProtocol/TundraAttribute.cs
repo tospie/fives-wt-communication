@@ -5,9 +5,20 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Represents an Attribute as defined in Tundra domain model. Consists of Type and specific instance
+    /// name
+    /// </summary>
     public class TundraAttribute
     {
+        /// <summary>
+        /// Name of the attribute instance within the component
+        /// </summary>
         public string Name { get; private set; }
+
+        /// <summary>
+        /// Type of the Attribute
+        /// </summary>
         public TundraAttributeType Type { get; private set; }
 
         public TundraAttribute(string name, TundraAttributeType type)
@@ -17,12 +28,18 @@ namespace WTProtocol
         }
     }
 
+    /// <summary>
+    /// Tundra Attribute Type, containing both name and the respective fixed type ID
+    /// </summary>
     public struct TundraAttributeType
     {
         public int ID;
         public string Name;
     }
 
+    /// <summary>
+    /// Used to map Attribute Type names to their fixed ID and vice versa
+    /// </summary>
     public static class AttributeMap
     {
         public static List<TundraAttributeType> Attributes = new List<TundraAttributeType>

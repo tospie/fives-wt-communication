@@ -8,6 +8,10 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Deserializer implementation that takes an incoming bytestream from the network and deserializes it to a SINFONI
+    /// Message object
+    /// </summary>
     public class WTDeserializer : MessageDeserializer
     {
         MessageBase deserializedMessage;
@@ -15,6 +19,11 @@ namespace WTProtocol
 
         public WTDeserializer(byte[] inputStream) : base(inputStream) {}
 
+        /// <summary>
+        /// Deserializes the Bit Stream to a SINFONI message object. The message is passed as reference from the
+        /// SINFONI Protocol object and constructed while the byte stream is interpreted
+        /// </summary>
+        /// <param name="deserializedMessage">SINFONI Message object that is constructed during deserialization</param>
         public override void Deserialize(ref MessageBase deserializedMessage)
         {
             this.deserializedMessage = deserializedMessage;
@@ -22,6 +31,10 @@ namespace WTProtocol
             ProcessBody();
         }
 
+        /// <summary>
+        /// Reads the Message ID from the beginning of the bytestream. Message codes, as used by Tundra Protocol, are
+        /// mapped to SINFONI service names
+        /// </summary>
         private void ReadMessageID()
         {
             UInt16 messageID = ReadUInt16();
@@ -33,6 +46,10 @@ namespace WTProtocol
             }
         }
 
+        /// <summary>
+        /// Processes the message body. Passes the data block which contains the message payload to the respective
+        /// message type deserializer
+        /// </summary>
         private void ProcessBody()
         {
             byte[] bodyBytes = GetRemainingBytes();
