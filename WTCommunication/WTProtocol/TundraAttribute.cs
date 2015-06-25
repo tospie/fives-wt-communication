@@ -5,6 +5,17 @@ using System.Text;
 
 namespace WTProtocol
 {
+    public class TundraAttribute
+    {
+        public string Name { get; private set; }
+        public TundraAttributeType Type { get; private set; }
+
+        public TundraAttribute(string name, TundraAttributeType type)
+        {
+            Name = name;
+            Type = type;
+        }
+    }
 
     public struct TundraAttributeType
     {
