@@ -22,6 +22,7 @@ namespace WTProtocol
         public Dictionary<string, object> DeserializeAttributes(string componentName)
         {
             Dictionary<string, object> attributes = new Dictionary<string, object>();
+
             TundraComponent component = TundraComponentMap.Instance.Components.Single(c => c.Name == componentName);
 
             List<TundraAttribute> componentAttributes = component.Attributes;
