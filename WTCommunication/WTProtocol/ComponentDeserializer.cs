@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WTProtocol.Components;
 
 namespace WTProtocol
 {
@@ -19,7 +18,7 @@ namespace WTProtocol
                 uint componentID = ReadVLE();
                 uint componentTypeID = ReadVLE();
                 string componentName = ReadString();
-                TundraComponent component = ComponentMap.Components.Single(c => c.ID == componentTypeID);
+                TundraComponent component = ComponentMap.Instance.Components.Single(c => c.ID == componentTypeID);
                 string componentTypeName = component.Name;
                 uint attributeDataBlockSize = ReadVLE();
                 byte[] attributeDataBlock = new byte[attributeDataBlockSize];

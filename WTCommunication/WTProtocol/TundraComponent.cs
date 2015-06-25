@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WTProtocol.Components
+namespace WTProtocol
 {
     public class TundraComponent
     {
@@ -31,13 +31,39 @@ namespace WTProtocol.Components
         }
     }
 
-    public static class ComponentMap
+    public class ComponentMap
     {
-        public static List<TundraComponent> Components = new List<TundraComponent>
+        public static ComponentMap Instance {
+            get
+            {
+                return instance;
+            }
+        }
+
+        private ComponentMap()
+        {
+            AddMeshComponent();
+        }
+
+        public List<TundraComponent> Components = new List<TundraComponent>
         {
             new TundraComponent(1, "avatar"),
-            new TundraComponent(17, "mesh"),
             new TundraComponent(20, "placeable")
         };
+
+        private void AddMeshComponent()
+        {
+            TundraComponent meshComponent = new TundraComponent(17, "mesh");
+            meshComponent.AddAttribute("nodeTransformation", "transform");
+            meshComponent.AddAttribute("meshRef", "assetReference");
+            meshComponent.AddAttribute("skeletonRef", "skeletonReference");
+            meshComponent.AddAttribute("meshMaterial", "assetReferenceList");
+            meshComponent.AddAttribute("drawDistance", "real");
+            meshComponent.AddAttribute("castShadows", "bool");
+            meshComponent.AddAttribute("useInstancing", "bool");
+            Components.Add(meshComponent);
+        }
+
+        private static ComponentMap instance = new ComponentMap();
     }
 }
