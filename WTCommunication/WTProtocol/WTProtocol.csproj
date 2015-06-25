@@ -57,7 +57,7 @@
     <Compile Include="LoginMessageDeserializer.cs" />
     <Compile Include="MessageDeserializer.cs" />
     <Compile Include="TundraAttribute.cs" />
-    <Compile Include="TundraComponent.cs" />
+    <Compile Include="Components\TundraComponent.cs" />
     <Compile Include="WTDeserializer.cs" />
     <Compile Include="WTProtocol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

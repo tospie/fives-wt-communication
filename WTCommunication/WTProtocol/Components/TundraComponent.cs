@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WTProtocol
+namespace WTProtocol.Components
 {
     public class TundraComponent
     {
