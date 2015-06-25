@@ -27,10 +27,5 @@ namespace WTProtocol.AttributeTypes
             Vector["z"] = ReadFloat();
             return Vector;
         }
-
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

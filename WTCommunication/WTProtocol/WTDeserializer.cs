@@ -8,7 +8,7 @@ using System.Text;
 
 namespace WTProtocol
 {
-    public class WTDeserializer : DataDeserializer
+    public class WTDeserializer : MessageDeserializer
     {
         MessageBase deserializedMessage;
         UInt16 currentMessageType;

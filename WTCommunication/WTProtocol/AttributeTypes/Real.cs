@@ -14,12 +14,6 @@ namespace WTProtocol.AttributeTypes
             float result = ReadFloat();
             outIndex = this.byteIndex;
             return result;
-            return ReadFloat();
-        }
-
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
-        {
-            throw new NotImplementedException();
         }
     }
 }

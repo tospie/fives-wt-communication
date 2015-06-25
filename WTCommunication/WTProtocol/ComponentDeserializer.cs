@@ -9,13 +9,6 @@ namespace WTProtocol
     {
         public ComponentDeserializer(byte[] inputStream) : base(inputStream) { }
 
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
-        {
-            throw new NotImplementedException(
-                @"ComponentDeserializer does not implement deserialization to message object.
-                Use deserialization to Component object instead");
-        }
-
         public Dictionary<string, object> Deserialize()
         {
             Dictionary<string, object> components = new Dictionary<string, object>();

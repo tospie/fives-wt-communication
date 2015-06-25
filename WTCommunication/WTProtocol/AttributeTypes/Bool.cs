@@ -14,12 +14,6 @@ namespace WTProtocol.AttributeTypes
             bool result = ReadBool();
             outIndex = this.byteIndex;
             return result;
-            return ReadBool();
-        }
-
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
-        {
-            throw new NotImplementedException();
         }
     }
 }

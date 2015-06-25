@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WTProtocol
 {
-    public class CreateEntityMessageDeserializer : DataDeserializer
+    public class CreateEntityMessageDeserializer : MessageDeserializer
     {
         public CreateEntityMessageDeserializer(byte[] inputStream) : base(inputStream) { }
 

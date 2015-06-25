@@ -11,13 +11,6 @@ namespace WTProtocol
         protected byte[] currentInputStream;
         protected int byteIndex = 0;
 
-        /// <summary>
-        /// Implemented by derived classes that provide specific deserialization routines. Interprets the
-        /// Deserializer's bytestream as message or parts of messages.
-        /// </summary>
-        /// <param name="deserializedMessage">The resulting deserialized message. Passed from the caller</param>
-        public abstract void Deserialize(ref MessageBase deserializedMessage);
-
         public DataDeserializer(byte[] inputStream)
         {
             currentInputStream = inputStream;

@@ -22,10 +22,5 @@ namespace WTProtocol.AttributeTypes
             return references;
         }
 
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

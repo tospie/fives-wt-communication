@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WTProtocol
 {
-    public class LoginMessageDeserializer : DataDeserializer
+    public class LoginMessageDeserializer : MessageDeserializer
     {
         public LoginMessageDeserializer(byte[] inputStream) : base(inputStream) { }
 
