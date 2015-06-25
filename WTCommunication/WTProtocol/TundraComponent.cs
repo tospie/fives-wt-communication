@@ -30,40 +30,4 @@ namespace WTProtocol
             Attributes.Add(new TundraAttribute(name, attributeType));
         }
     }
-
-    public class ComponentMap
-    {
-        public static ComponentMap Instance {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private ComponentMap()
-        {
-            AddMeshComponent();
-        }
-
-        public List<TundraComponent> Components = new List<TundraComponent>
-        {
-            new TundraComponent(1, "avatar"),
-            new TundraComponent(20, "placeable")
-        };
-
-        private void AddMeshComponent()
-        {
-            TundraComponent meshComponent = new TundraComponent(17, "mesh");
-            meshComponent.AddAttribute("nodeTransformation", "transform");
-            meshComponent.AddAttribute("meshRef", "assetReference");
-            meshComponent.AddAttribute("skeletonRef", "skeletonReference");
-            meshComponent.AddAttribute("meshMaterial", "assetReferenceList");
-            meshComponent.AddAttribute("drawDistance", "real");
-            meshComponent.AddAttribute("castShadows", "bool");
-            meshComponent.AddAttribute("useInstancing", "bool");
-            Components.Add(meshComponent);
-        }
-
-        private static ComponentMap instance = new ComponentMap();
-    }
 }
