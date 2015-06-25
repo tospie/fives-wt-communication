@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FIVES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,14 @@ namespace WTProtocol
         {
             Dictionary<string, object> attributes = new Dictionary<string, object>();
             TundraComponent component = ComponentMap.Components.Single(c => c.Name == componentName);
-            List<string> attributeTypeNames = component.Attributes;
-            for (int i = 0; i < attributeTypeNames.Count; i++)
+            List<TundraAttribute> componentAttributes = component.Attributes;
+
+            for (int i = 0; i < attributes.Count; i++)
             {
-                string attributeName = attributeTypeNames[i];
+                string attributeTypeName = componentAttributes[i].Name;
                 var attributeValue =
                     AttributeTypeDeserializerFactory
-                    .GetDeserializer(attributeName, currentInputStream, byteIndex)
+                    .GetDeserializer(attributeTypeName, currentInputStream, byteIndex)
                     .Deserialize(ref byteIndex);
             }
             return attributes;
