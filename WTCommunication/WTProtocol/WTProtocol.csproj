@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FiVESMath">
+      <HintPath>..\Libs\FiVESMath.dll</HintPath>
+    </Reference>
     <Reference Include="KIARA">
       <HintPath>..\Libs\KIARA.dll</HintPath>
     </Reference>
@@ -45,6 +48,13 @@
   <ItemGroup>
     <Compile Include="AttributeDeserializer.cs" />
     <Compile Include="AttributeTypeDeserializerFactory.cs" />
+    <Compile Include="AttributeTypeSerializerFactory.cs" />
+    <Compile Include="AttributeTypeSerializers\AssetReferenceListSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\AssetReferenceSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\AttributeTypeSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\BoolSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\RealSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\TransformSerializer.cs" />
     <Compile Include="AttributeTypes\AssetReference.cs" />
     <Compile Include="AttributeTypes\AssetReferenceList.cs" />
     <Compile Include="AttributeTypes\AttributeTypeDeserializer.cs" />
@@ -70,10 +80,15 @@
       <Project>{14d58cf7-9110-44a3-bcbf-c1995a7cc977}</Project>
       <Name>WTCommunication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WTComponents\WTComponents.csproj">
+      <Project>{3adf65f8-2298-47b5-842d-0398f313463e}</Project>
+      <Name>WTComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="WTProtocol.licenseheader" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
