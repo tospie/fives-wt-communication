@@ -76,6 +76,10 @@ namespace WTComponentsPlugin
             placeable.AddAttribute<int>("selectionLayer");
             placeable.AddAttribute<Guid>("parentRef");
             placeable.AddAttribute<string>("parentBone");
+
+            // this is actually a little hack! FiVES does not assign individual ID's to components
+            // so we need a place to store the ID that arrives from Tundra and is also expected there
+            placeable.AddAttribute<uint>("componentID");
             ComponentRegistry.Instance.Register(placeable);
         }
 
@@ -89,6 +93,10 @@ namespace WTComponentsPlugin
             mesh.AddAttribute<float>("drawDistance");
             mesh.AddAttribute<bool>("castShadows");
             mesh.AddAttribute<bool>("useInstancing");
+
+            // this is actually a little hack! FiVES does not assign individual ID's to components
+            // so we need a place to store the ID that arrives from Tundra and is also expected there
+            mesh.AddAttribute<uint>("componentID");
             ComponentRegistry.Instance.Register(mesh);
         }
         #endregion
