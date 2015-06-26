@@ -20,8 +20,17 @@ using WTProtocol.AttributeTypeSerializers;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Serializes a set of attributes of a component to binary format as specified in Tundra Protocol specification
+    /// </summary>
     public class AttributeSerializer : DataSerializer
     {
+        /// <summary>
+        /// Takes a set of attributes and serializes them to binary format
+        /// </summary>
+        /// <param name="componentTypeName">Name of the component type as defined in the Tundra spec</param>
+        /// <param name="attributes">Set of attributes and their values attached to this component</param>
+        /// <returns>Serialized set of attributes in binary representation</returns>
         public byte[] Serialize(string componentTypeName, Dictionary<string, object> attributes)
         {
             TundraComponent component = TundraComponentMap.Instance.FindComponent(componentTypeName);

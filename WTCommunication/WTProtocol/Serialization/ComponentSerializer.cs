@@ -19,8 +19,18 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Used to serialize a component with its attributes to binary representation
+    /// </summary>
     public class ComponentSerializer : DataSerializer
     {
+        /// <summary>
+        /// Takes an object that contains information about an entity that changed its component and serializes
+        /// it to binary representation, containing about the component type, local ID, and all its attributes
+        /// and attribute values
+        /// </summary>
+        /// <param name="entity">Entity object that changed some of its components</param>
+        /// <returns>Components in binary representation</returns>
         public byte[] Serialize(Dictionary<object, object> entity)
         {
             // Entity Info contains GUID and Owner followed by n components

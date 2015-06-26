@@ -20,6 +20,9 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Used to serialize a message for newly created entities to binary format
+    /// </summary>
     public class CreateEntityMessageSerializer : MessageSerializer
     {
         public CreateEntityMessageSerializer(IMessage message) : base(message) { }

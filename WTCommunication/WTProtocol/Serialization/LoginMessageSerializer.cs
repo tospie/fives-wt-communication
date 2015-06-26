@@ -20,6 +20,9 @@ using System.Text;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Used to serialize a login reply message to binary format
+    /// </summary>
     public class LoginMessageSerializer : MessageSerializer
     {
         public LoginMessageSerializer(IMessage message) : base(message) { }

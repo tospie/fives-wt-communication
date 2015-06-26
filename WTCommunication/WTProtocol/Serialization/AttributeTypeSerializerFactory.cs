@@ -20,8 +20,16 @@ using WTProtocol.AttributeTypeSerializers;
 
 namespace WTProtocol
 {
+    /// <summary>
+    /// Used to return a serializer object w.r.t. a specific attribute type
+    /// </summary>
     public static class AttributeTypeSerializerFactory
     {
+        /// <summary>
+        /// Returns a serializer implementation specific to a Tundra attribute type
+        /// </summary>
+        /// <param name="typeName">Attribute type name</param>
+        /// <returns>Serializer for the respective Attribute type</returns>
         public static AttributeTypeSerializer GetTypeSerializer(string typeName)
         {
             switch(typeName)
