@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeDeserializer.cs" />
+    <Compile Include="AttributeSerializer.cs" />
     <Compile Include="AttributeTypeDeserializerFactory.cs" />
     <Compile Include="AttributeTypeSerializerFactory.cs" />
     <Compile Include="AttributeTypeSerializers\AssetReferenceListSerializer.cs" />
