@@ -82,6 +82,21 @@ namespace WTProtocol
             }
         }
 
+        protected void AddValue(int value)
+        {
+            using (var ms = new MemoryStream())
+            {
+                byte[] valueAsByteArray = BitConverter.GetBytes(value);
+
+                // We may have to flip byte order as ints are stored little endian
+                if (!BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(valueAsByteArray);
+                }
+                writer.Write(valueAsByteArray);
+            }
+        }
+
         protected void AddValue(float value)
         {
             using (var ms = new MemoryStream())
