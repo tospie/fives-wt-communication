@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeTypeDeserializers\IntDeserializer.cs" />
+    <Compile Include="AttributeTypeDeserializers\StringDeserializer.cs" />
+    <Compile Include="AttributeTypeSerializers\IntSerializer.cs" />
+    <Compile Include="AttributeTypeSerializers\StringSerializer.cs" />
     <Compile Include="Deserialization\AttributeDeserializer.cs" />
     <Compile Include="Serialization\AttributeSerializer.cs" />
     <Compile Include="Deserialization\AttributeTypeDeserializerFactory.cs" />
