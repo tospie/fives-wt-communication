@@ -53,9 +53,8 @@ namespace WTProtocol
 
         public object SerializeMessage(IMessage message)
         {
-            return Serializer.SerializeMessage(message);
+            WTSerializer Serializer = new WTSerializer(message);
+            return Serializer.Serialize();
         }
-
-        private WTSerializer Serializer = new WTSerializer();
     }
 }

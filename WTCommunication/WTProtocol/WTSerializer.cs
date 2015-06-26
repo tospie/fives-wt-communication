@@ -23,16 +23,12 @@ using WTCommunicationPlugin;
 
 namespace WTProtocol
 {
-    internal class WTSerializer
+    internal class WTSerializer : MessageSerializer
     {
-        MemoryStream dataView = new MemoryStream();
-        IMessage currentMessage;
-        BinaryWriter writer;
-        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        public WTSerializer(IMessage message) : base(message)  {}
 
-        public byte[] SerializeMessage(IMessage message)
+        public override byte[] Serialize()
         {
-            currentMessage = message;
             InitalizeSerialization();
             AddMessageID();
             AddPayload();
@@ -65,9 +61,10 @@ namespace WTProtocol
         {
             switch (currentMessage.MethodName)
             {
+                case "objectsync.receiveNewObjects": writer.Write(new CreateEntityMessageSerializer(currentMessage).Serialize()); break;
                 case "tundra.login": break;
                 // Same hack as above. Treat every response as login response
-                default: if (currentMessage.Type == MessageType.RESPONSE) AddLoginPayload(MessageType.RESPONSE); break;
+                default: if (currentMessage.Type == MessageType.RESPONSE) writer.Write(new LoginMessageSerializer(currentMessage).Serialize()); break;
             }
         }
 
