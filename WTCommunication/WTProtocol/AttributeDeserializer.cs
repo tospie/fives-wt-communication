@@ -37,7 +37,7 @@ namespace WTProtocol
         {
             Dictionary<string, object> attributes = new Dictionary<string, object>();
 
-            TundraComponent component = TundraComponentMap.Instance.Components.Single(c => c.Name == componentName);
+            TundraComponent component = TundraComponentMap.Instance.FindComponent(componentName);
 
             List<TundraAttribute> componentAttributes = component.Attributes;
 

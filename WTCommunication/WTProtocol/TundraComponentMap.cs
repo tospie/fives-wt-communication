@@ -28,6 +28,40 @@ namespace WTProtocol
 
         public List<TundraComponent> Components { get; private set; }
 
+        /// <summary>
+        /// Searches the list of registered Components for a component with the specified type name.
+        /// </summary>
+        /// <param name="typeName">TypeName of the component that should be returned</param>
+        /// <returns>TundraComponent with the respective name</returns>
+        public TundraComponent FindComponent(string typeName)
+        {
+            try
+            {
+                return Components.Single(c => c.Name == typeName);
+            }
+            catch (Exception)
+            {
+                throw new KeyNotFoundException("TundraComponent with Type Name " + typeName + " could not be found");
+            }
+        }
+
+        /// <summary>
+        /// Searches the list of registered Components for a component with the specified type ID.
+        /// </summary>
+        /// <param name="typeName">Type ID of the component that should be returned</param>
+        /// <returns>TundraComponent with the respective ID</returns>
+        public TundraComponent FindComponent(uint typeID)
+        {
+            try
+            {
+                return Components.Single(c => c.ID == typeID);
+            }
+            catch (Exception)
+            {
+                throw new KeyNotFoundException("TundraComponent with Type ID " + typeID + " could not be found");
+            }
+        }
+
         private TundraComponentMap()
         {
             Components = new List<TundraComponent>();

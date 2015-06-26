@@ -40,7 +40,7 @@ namespace WTProtocol
                 uint componentID = ReadVLE();
                 uint componentTypeID = ReadVLE();
                 string componentName = ReadString();
-                TundraComponent component = TundraComponentMap.Instance.Components.Single(c => c.ID == componentTypeID);
+                TundraComponent component = TundraComponentMap.Instance.FindComponent(componentTypeID);
                 string componentTypeName = component.Name;
                 uint attributeDataBlockSize = ReadVLE();
                 byte[] attributeDataBlock = new byte[attributeDataBlockSize];
