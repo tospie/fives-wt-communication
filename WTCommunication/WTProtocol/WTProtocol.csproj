@@ -54,6 +54,7 @@
     <Compile Include="ComponentDeserializer.cs" />
     <Compile Include="CreateEntityMessageDeserializer.cs" />
     <Compile Include="DataDeserializer.cs" />
+    <Compile Include="DataSerializer.cs" />
     <Compile Include="LoginMessageDeserializer.cs" />
     <Compile Include="MessageDeserializer.cs" />
     <Compile Include="TundraAttribute.cs" />
