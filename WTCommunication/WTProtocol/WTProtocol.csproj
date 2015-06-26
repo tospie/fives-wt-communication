@@ -65,10 +65,13 @@
     <Compile Include="ComponentDeserializer.cs" />
     <Compile Include="ComponentSerializer.cs" />
     <Compile Include="CreateEntityMessageDeserializer.cs" />
+    <Compile Include="CreateEntityMessageSerializer.cs" />
     <Compile Include="DataDeserializer.cs" />
     <Compile Include="DataSerializer.cs" />
     <Compile Include="LoginMessageDeserializer.cs" />
+    <Compile Include="LoginMessageSerializer.cs" />
     <Compile Include="MessageDeserializer.cs" />
+    <Compile Include="MessageSerializer.cs" />
     <Compile Include="TundraAttribute.cs" />
     <Compile Include="TundraComponent.cs" />
     <Compile Include="TundraComponentMap.cs" />
