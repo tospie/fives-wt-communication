@@ -76,6 +76,26 @@ namespace WTProtocol
         }
 
         /// <summary>
+        /// Reads the next four bytes from the input stream and returns the value as 32 bit signed integer
+        /// </summary>
+        /// <returns>Value as 32 bit signed integer</returns>
+        protected int ReadInt32()
+        {
+            byte[] intBytes = new byte[4];
+            Array.Copy(currentInputStream, byteIndex, intBytes, 0, 4);
+
+            // Int is stored in little endian binary representation in the stream, so we have have to flip byte order
+            if (!BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(intBytes);
+            }
+            int result = BitConverter.ToInt32(intBytes, 0);
+            byteIndex += 4;
+
+            return result;
+        }
+
+        /// <summary>
         /// Reads the next four bytes from the input stream and returns them as 32 bit signed single precision
         /// floating point value
         /// </summary>
