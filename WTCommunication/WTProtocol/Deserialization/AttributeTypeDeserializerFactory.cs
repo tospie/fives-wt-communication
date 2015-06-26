@@ -41,8 +41,13 @@ namespace WTProtocol
                 case "bool": return new Bool(stream, byteIndex);
                 case "real": return new Real(stream, byteIndex);
                 case "transform": return new Transform(stream, byteIndex);
-                case "assetReference": return new AssetReference(stream, byteIndex);
+
+                // Asset Reference and Entity Reference use same representation
+                case "assetReference":
+                case "entityReference": return new AssetReference(stream, byteIndex);
                 case "assetReferenceList": return new AssetReferenceList(stream, byteIndex);
+                case "int": return new IntDeserializer(stream, byteIndex);
+                case "string": return new StringDeserializer(stream, byteIndex);
                 default: throw new
                     NotImplementedException("Deserializer for Attribute Type " + name + " is not implemented");
             }
