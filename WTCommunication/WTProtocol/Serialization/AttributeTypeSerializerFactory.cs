@@ -34,11 +34,15 @@ namespace WTProtocol
         {
             switch(typeName)
             {
+                // Entity Refernence and Asset Reference use same representation
+                case "entityReference":
                 case "assetReference": return new AssetReferenceSerializer();
                 case "assetReferenceList": return new AssetReferenceListSerializer();
                 case "bool": return new BoolSerializer();
                 case "real": return new RealSerializer();
                 case "transform": return new TransformSerializer();
+                case "string": return new StringSerializer();
+                case "int": return new IntSerializer();
                 default: throw new
                      NotImplementedException("Serializer for Attribute Type " + typeName + " is not implemented");
             }
