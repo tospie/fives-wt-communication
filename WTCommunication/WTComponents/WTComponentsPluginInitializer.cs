@@ -74,7 +74,7 @@ namespace WTComponentsPlugin
             placeable.AddAttribute<bool>("drawDebug");
             placeable.AddAttribute<bool>("visible");
             placeable.AddAttribute<int>("selectionLayer");
-            placeable.AddAttribute<Guid>("parentRef");
+            placeable.AddAttribute<string>("parentRef");
             placeable.AddAttribute<string>("parentBone");
 
             // this is actually a little hack! FiVES does not assign individual ID's to components

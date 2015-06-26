@@ -66,6 +66,7 @@ namespace WTProtocol
         {
             Components = new List<TundraComponent>();
             AddMeshComponent();
+            AddPlaceableComponent();
         }
 
         private void AddMeshComponent()
@@ -78,6 +79,18 @@ namespace WTProtocol
             meshComponent.AddAttribute("drawDistance", "real");
             meshComponent.AddAttribute("castShadows", "bool");
             meshComponent.AddAttribute("useInstancing", "bool");
+            Components.Add(meshComponent);
+        }
+
+        private void AddPlaceableComponent()
+        {
+            TundraComponent meshComponent = new TundraComponent(20, "placeable");
+            meshComponent.AddAttribute("transform", "transform");
+            meshComponent.AddAttribute("drawDebug", "bool");
+            meshComponent.AddAttribute("visible", "bool");
+            meshComponent.AddAttribute("selectionLayer", "int");
+            meshComponent.AddAttribute("parentRef", "entityReference");
+            meshComponent.AddAttribute("parentBone", "string");
             Components.Add(meshComponent);
         }
 
