@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using FIVES;
 using System.IO;
 using ClientManagerPlugin;
+using KIARA;
 
 namespace WTCommunicationPlugin
 {
@@ -68,13 +69,14 @@ namespace WTCommunicationPlugin
         {
             ClientManager.Instance.RegisterClientService("tundra", false, new Dictionary<string, Delegate>
             {
-                {"login", (Func<string, LoginReply>)Login},
+                {"login", (Func<Connection, string, LoginReply>)Login},
                 {"editAttributes", (Action<string, string, string, object>)EditAttributes}
             });
         }
 
-        private LoginReply Login(string loginProperties)
+        private LoginReply Login(Connection connection, string loginProperties)
         {
+            ClientManager.Instance.ReceiveAuthenticatedClient(connection);
             return new LoginReply {
                 Success = true,
                 ConnectionID = NumConnectedClients++,
