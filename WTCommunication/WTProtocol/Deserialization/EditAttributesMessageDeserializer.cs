@@ -27,14 +27,20 @@ namespace WTProtocol
         {
             uint sceneID = ReadVLE();
             string entityID = ReadGuidAsVLE();
-            Dictionary<uint, byte[]> updatedComponents = new Dictionary<uint, byte[]>();
+            List<Dictionary<string, object>> updatedComponents = new List<Dictionary<string, object>>();
             while (byteIndex < currentInputStream.Length)
             {
                 uint componentID = ReadVLE();
                 uint attributeDataBlockSize = ReadVLE();
                 byte[] attributeData = new byte[attributeDataBlockSize];
                 Array.Copy(currentInputStream, byteIndex, attributeData, 0, attributeDataBlockSize);
-                updatedComponents.Add(componentID, attributeData);
+
+                byteIndex += (int)attributeDataBlockSize;
+                Dictionary<string, object> componentUpdate = new Dictionary<string, object>{
+                    {"componentId", componentID},
+                    {"attributeData", attributeData}
+                };
+                updatedComponents.Add(componentUpdate);
             }
 
             deserializedMessage.Parameters.Add(entityID);

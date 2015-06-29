@@ -4,7 +4,12 @@
 	string ReplyData;
 }
 
+struct ComponentUpdate {
+	u32 componentId;
+	array<byte> attributeData;
+}
+
 service tundra {
 	LoginReply login(string loginProperties);
-	void editAttributes(string entityGuid, int componentId, array<byte> attributeName, any newValue);
+	void editAttributes(string entityGuid, array<ComponentUpdate> attributeData);
 }

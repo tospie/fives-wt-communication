@@ -34,6 +34,9 @@
     <Reference Include="ClientManager">
       <HintPath>..\Libs\ClientManager.dll</HintPath>
     </Reference>
+    <Reference Include="Collections">
+      <HintPath>..\Libs\Collections.dll</HintPath>
+    </Reference>
     <Reference Include="DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DomainModel.dll</HintPath>
@@ -56,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentUpdate.cs" />
     <Compile Include="LoginReply.cs" />
     <Compile Include="WTCommunicationPluginInitalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
