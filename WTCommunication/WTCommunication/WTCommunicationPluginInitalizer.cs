@@ -70,7 +70,7 @@ namespace WTCommunicationPlugin
             ClientManager.Instance.RegisterClientService("tundra", false, new Dictionary<string, Delegate>
             {
                 {"login", (Func<Connection, string, LoginReply>)Login},
-                {"editAttributes", (Action<string, string, string, object>)EditAttributes}
+                {"editAttributes", (Action<string, int, byte[]>)EditAttributes}
             });
         }
 
@@ -84,7 +84,7 @@ namespace WTCommunicationPlugin
             };
         }
 
-        private void EditAttributes(string entityGuid, string componentName, string attributeName, object value)
+        private void EditAttributes(string entityGuid, int componentId, byte[] attributeData)
         {
             Entity entity = World.Instance.FindEntity(entityGuid);
             entity[componentName][attributeName].Suggest(value);

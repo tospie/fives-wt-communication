@@ -6,5 +6,5 @@
 
 service tundra {
 	LoginReply login(string loginProperties);
-	void editAttributes(string entityGuid, string componentName, string attributeName, any newValue);
+	void editAttributes(string entityGuid, int componentId, array<byte> attributeName, any newValue);
 }
