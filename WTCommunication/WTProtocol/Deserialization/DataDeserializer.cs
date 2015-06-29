@@ -24,6 +24,7 @@ namespace WTProtocol
     {
         protected byte[] currentInputStream;
         protected int byteIndex = 0;
+        protected int bitIndex = 0;
 
         public DataDeserializer(byte[] inputStream)
         {
@@ -153,6 +154,50 @@ namespace WTProtocol
             med = med & 0x7f;
             uint high = ReadUInt16();
             return low | (med << 7) | (high << 14);
+        }
+
+        /// <summary>
+        /// Reads a number of bits and returns them as an integer with as many bytes expressiveness as bits
+        /// were read
+        /// </summary>
+        /// <param name="bitCount">Number of bits that should be read from the stream</param>
+        /// <returns>Integer value described by read bits</returns>
+        protected int ReadBits(int bitCount)
+        {
+            int value = 0;
+            byte bitsRead = 0;
+            byte currentByte = currentInputStream[byteIndex];
+
+            while (bitCount > 0)
+            {
+                if((currentByte & ( 1 << this.bitIndex)) != 0)
+                    value |= (1 << bitsRead);
+
+                bitsRead++;
+                bitCount--;
+                increaseBitIndex(bitCount, ref currentByte);
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// Increases the bit-counter of the deserializer by one and shifts to next byte if full byte was read
+        /// </summary>
+        /// <param name="bitCount">Remaining bits to be read in current bit reading operation</param>
+        /// <param name="currentByte">Current byte of input stream</param>
+        protected void increaseBitIndex(int bitCount, ref byte currentByte)
+        {
+            this.bitIndex++;
+            if(this.bitIndex > 7)
+            {
+                this.bitIndex = 0;
+                this.byteIndex++;
+                if (bitCount > 0)
+                {
+                    currentByte = currentInputStream[byteIndex];
+                }
+            }
         }
     }
 }
