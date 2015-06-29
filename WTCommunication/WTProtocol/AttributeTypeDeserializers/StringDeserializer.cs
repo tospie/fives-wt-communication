@@ -21,14 +21,15 @@ namespace WTProtocol.AttributeTypes
 {
     public class StringDeserializer : AttributeTypeDeserializer
     {
-        public StringDeserializer(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public StringDeserializer(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             ushort stringLength = ReadUInt16();
             string result = ReadString(stringLength);
             outIndex = this.byteIndex;
-
+            outBitIndex = this.bitIndex;
             return result;
         }
     }

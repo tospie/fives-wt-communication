@@ -22,12 +22,14 @@ namespace WTProtocol.AttributeTypes
 {
     class IntDeserializer : AttributeTypeDeserializer
     {
-        public IntDeserializer(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public IntDeserializer(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             int result = ReadInt32();
             outIndex = this.byteIndex;
+            outBitIndex = this.bitIndex;
             return result;
         }
     }

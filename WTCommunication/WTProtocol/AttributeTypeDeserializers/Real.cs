@@ -21,12 +21,14 @@ namespace WTProtocol.AttributeTypes
 {
     public class Real : AttributeTypeDeserializer
     {
-        public Real(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public Real(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             float result = ReadFloat();
             outIndex = this.byteIndex;
+            outBitIndex = this.bitIndex;
             return result;
         }
     }

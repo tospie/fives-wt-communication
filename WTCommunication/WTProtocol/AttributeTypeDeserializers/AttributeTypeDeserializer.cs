@@ -22,10 +22,11 @@ namespace WTProtocol.AttributeTypes
 {
     public abstract class AttributeTypeDeserializer : DataDeserializer
     {
-        public AttributeTypeDeserializer(byte[] inputStream, int byteIndex) : base(inputStream) {
+        public AttributeTypeDeserializer(byte[] inputStream, int byteIndex, int bitIndex) : base(inputStream) {
             this.byteIndex = byteIndex;
+            this.bitIndex = bitIndex;
         }
 
-        public abstract object Deserialize(ref int outIndex);
+        public abstract object Deserialize(ref int outIndex, ref int outBitIndex);
     }
 }

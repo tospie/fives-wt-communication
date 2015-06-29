@@ -21,12 +21,14 @@ namespace WTProtocol.AttributeTypes
 {
     public class Bool : AttributeTypeDeserializer
     {
-        public Bool(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public Bool(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             bool result = ReadBool();
             outIndex = this.byteIndex;
+            outBitIndex = bitIndex;
             return result;
         }
     }

@@ -34,20 +34,20 @@ namespace WTProtocol
         /// <param name="stream">Byte stream of the incoming message</param>
         /// <param name="byteIndex">current byte index of the message deserializer within the stream</param>
         /// <returns>The deserializer of the respective attribute type</returns>
-        public static AttributeTypeDeserializer GetDeserializer(string name, byte[] stream, int byteIndex)
+        public static AttributeTypeDeserializer GetDeserializer(string name, byte[] stream, int byteIndex, int bitIndex)
         {
             switch (name)
             {
-                case "bool": return new Bool(stream, byteIndex);
-                case "real": return new Real(stream, byteIndex);
-                case "transform": return new Transform(stream, byteIndex);
+                case "bool": return new Bool(stream, byteIndex, bitIndex);
+                case "real": return new Real(stream, byteIndex, bitIndex);
+                case "transform": return new Transform(stream, byteIndex, bitIndex);
 
                 // Asset Reference and Entity Reference use same representation
                 case "assetReference":
-                case "entityReference": return new AssetReference(stream, byteIndex);
-                case "assetReferenceList": return new AssetReferenceList(stream, byteIndex);
-                case "int": return new IntDeserializer(stream, byteIndex);
-                case "string": return new StringDeserializer(stream, byteIndex);
+                case "entityReference": return new AssetReference(stream, byteIndex, bitIndex);
+                case "assetReferenceList": return new AssetReferenceList(stream, byteIndex, bitIndex);
+                case "int": return new IntDeserializer(stream, byteIndex, bitIndex);
+                case "string": return new StringDeserializer(stream, byteIndex, bitIndex);
                 default: throw new
                     NotImplementedException("Deserializer for Attribute Type " + name + " is not implemented");
             }

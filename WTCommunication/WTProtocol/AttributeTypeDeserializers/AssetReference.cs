@@ -21,12 +21,14 @@ namespace WTProtocol.AttributeTypes
 {
     public class AssetReference : AttributeTypeDeserializer
     {
-        public AssetReference(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public AssetReference(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             string result = ReadString();
             outIndex = this.byteIndex;
+            outBitIndex = this.bitIndex;
             return result;
         }
     }

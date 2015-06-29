@@ -21,15 +21,17 @@ namespace WTProtocol.AttributeTypes
 {
     public class Transform : AttributeTypeDeserializer
     {
-        public Transform(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public Transform(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             Dictionary<string, object> transform = new Dictionary<string,object>();
             transform["pos"] = deserializeVec3();
             transform["rot"] = deserializeVec3();
             transform["scale"] = deserializeVec3();
             outIndex = this.byteIndex;
+            outBitIndex = this.bitIndex;
             return transform;
         }
 

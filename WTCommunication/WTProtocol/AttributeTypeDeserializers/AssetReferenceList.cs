@@ -22,17 +22,19 @@ namespace WTProtocol.AttributeTypes
     public class AssetReferenceList : AttributeTypeDeserializer
     {
 
-        public AssetReferenceList(byte[] inputStream, int byteIndex) : base(inputStream, byteIndex) { }
+        public AssetReferenceList(byte[] inputStream, int byteIndex, int bitIndex)
+            : base(inputStream, byteIndex, bitIndex) { }
 
-        public override object Deserialize(ref int outIndex)
+        public override object Deserialize(ref int outIndex, ref int outBitIndex)
         {
             List<object> references = new List<object>();
             byte numberOfReferences = ReadByte();
             for (byte n = 0; n < numberOfReferences; n++)
             {
-                references.Add(new AssetReference(currentInputStream, this.byteIndex));
+                references.Add(new AssetReference(currentInputStream, this.byteIndex, this.bitIndex));
             }
             outIndex = this.byteIndex;
+            outBitIndex = this.bitIndex;
             return references;
         }
 
