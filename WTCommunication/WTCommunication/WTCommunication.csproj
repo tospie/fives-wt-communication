@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeUpdateDeserializer.cs" />
     <Compile Include="ComponentUpdate.cs" />
     <Compile Include="LoginReply.cs" />
     <Compile Include="WTCommunicationPluginInitalizer.cs" />
@@ -69,6 +70,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="WTCommunication.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WTProtocol\WTProtocol.csproj">
+      <Project>{ef874932-475a-44d7-b0f5-b528da016ba8}</Project>
+      <Name>WTProtocol</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
