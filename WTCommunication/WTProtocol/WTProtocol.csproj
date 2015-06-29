@@ -88,10 +88,6 @@
     <Compile Include="Serialization\WTSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WTCommunication\WTCommunication.csproj">
-      <Project>{14d58cf7-9110-44a3-bcbf-c1995a7cc977}</Project>
-      <Name>WTCommunication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WTComponents\WTComponents.csproj">
       <Project>{3adf65f8-2298-47b5-842d-0398f313463e}</Project>
       <Name>WTComponents</Name>
