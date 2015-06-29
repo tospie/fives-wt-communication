@@ -67,15 +67,9 @@ namespace WTProtocol
         private void ProcessBody()
         {
             byte[] bodyBytes = GetRemainingBytes();
-            switch (currentMessageType)
-            {
-                case 100: deserializedMessage.Type = MessageType.REQUEST;
-                          new LoginMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
-                          break;
-                case 110: deserializedMessage.Type = MessageType.REQUEST;
-                           new CreateEntityMessageDeserializer(bodyBytes).Deserialize(ref deserializedMessage);
-                           break;
-            }
+            deserializedMessage.Type = MessageType.REQUEST;
+            MessageDeserializerFactory
+                .GetDeserializerForMessage(currentMessageType, bodyBytes).Deserialize(ref deserializedMessage);
         }
     }
 }
