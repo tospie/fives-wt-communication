@@ -57,6 +57,10 @@ namespace WTProtocol
             {
                 case 100: deserializedMessage.MethodName = "tundra.login"; break;
                 case 110: deserializedMessage.MethodName = "objectsync.receiveNewObjects"; break;
+                // TODO: Find suitable FiVES wrapper
+                /* case 111: deserializedMessage.MethodName = "objectsync.createComponents"; break; */
+                case 113: deserializedMessage.MethodName = "tundra.editAttributes"; break;
+                case 116: deserializedMessage.MethodName = "objectsync.removeObject"; break;
             }
         }
 
