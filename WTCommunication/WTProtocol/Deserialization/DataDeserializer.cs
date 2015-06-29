@@ -59,9 +59,10 @@ namespace WTProtocol
         /// <returns>Value as 8 bit unsigned integer</returns>
         protected byte ReadByte()
         {
-            byte value = currentInputStream[byteIndex];
-            byteIndex++;
-            return value;
+            if (bitIndex == 0)
+                return currentInputStream[byteIndex++];
+            else
+                return (byte)this.ReadBits(8);
         }
 
         /// <summary>
@@ -70,10 +71,34 @@ namespace WTProtocol
         /// <returns>Value as 16 bit unsigned integer</returns>
         protected UInt16 ReadUInt16()
         {
-            UInt16 result = BitConverter.ToUInt16(currentInputStream, byteIndex);
-            Int16 test = BitConverter.ToInt16(currentInputStream, byteIndex);
-            byteIndex += 2;
-            return result;
+            if (this.bitIndex == 0)
+            {
+                UInt16 result = BitConverter.ToUInt16(currentInputStream, byteIndex);
+                byteIndex += 2;
+                return result;
+            }
+            else
+            {
+                return (ushort)ReadBits(16);
+            }
+        }
+
+        /// <summary>
+        /// Read the next 4 bytes from the input stream and returns the value as 32 bit unsigned integer
+        /// </summary>
+        /// <returns>Value as 32 bit unsigned integer</returns>
+        protected uint ReadUInt32()
+        {
+            if (this.bitIndex == 0)
+            {
+                var result = BitConverter.ToUInt32(currentInputStream, byteIndex);
+                this.byteIndex += 4;
+                return result;
+            }
+            else
+            {
+                return (uint)ReadBits(32);
+            }
         }
 
         /// <summary>
@@ -82,18 +107,10 @@ namespace WTProtocol
         /// <returns>Value as 32 bit signed integer</returns>
         protected int ReadInt32()
         {
-            byte[] intBytes = new byte[4];
-            Array.Copy(currentInputStream, byteIndex, intBytes, 0, 4);
-
-            // Int is stored in little endian binary representation in the stream, so we have have to flip byte order
-            if (!BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(intBytes);
-            }
-            int result = BitConverter.ToInt32(intBytes, 0);
-            byteIndex += 4;
-
-            return result;
+            long result = ReadUInt32();
+            if (result >= 0x80000000)
+                result -= 0x100000000;
+            return (int)result;
         }
 
         /// <summary>
@@ -103,9 +120,18 @@ namespace WTProtocol
         /// <returns>Bytes as 32 bit single precision float</returns>
         protected float ReadFloat()
         {
-            float result = BitConverter.ToSingle(currentInputStream, byteIndex);
-            byteIndex += 4;
-            return result;
+            if(this.bitIndex == 0)
+            {
+                float result = BitConverter.ToSingle(currentInputStream, byteIndex);
+                byteIndex += 4;
+                return result;
+            }
+            else
+            {
+                uint byteValue = (uint)ReadBits(32);
+                byte[] bytes = BitConverter.GetBytes(byteValue);
+                return BitConverter.ToSingle(bytes, 0);
+            }
         }
 
         /// <summary>
@@ -129,9 +155,9 @@ namespace WTProtocol
         protected string ReadString(UInt16 length)
         {
             byte[] byteValue = new byte[length];
-            Array.Copy(currentInputStream, byteIndex, byteValue, 0, length);
+            for (var i = 0; i < length; i++)
+                byteValue[i] = ReadByte();
             string result = System.Text.Encoding.UTF8.GetString(byteValue);
-            byteIndex += length;
             return result;
         }
 
