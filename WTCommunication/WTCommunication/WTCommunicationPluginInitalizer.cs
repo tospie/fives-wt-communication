@@ -70,7 +70,7 @@ namespace WTCommunicationPlugin
             ClientManager.Instance.RegisterClientService("tundra", false, new Dictionary<string, Delegate>
             {
                 {"login", (Func<Connection, string, LoginReply>)Login},
-                {"editAttributes", (Action<string, int, byte[]>)EditAttributes}
+                {"editAttributes", (Action<string, List<ComponentUpdate>>)EditAttributes}
             });
         }
 
