@@ -51,6 +51,9 @@
     <Compile Include="AttributeTypeSerializers\IntSerializer.cs" />
     <Compile Include="AttributeTypeSerializers\StringSerializer.cs" />
     <Compile Include="Deserialization\AttributeDeserializer.cs" />
+    <Compile Include="Deserialization\CreateComponentsMessageDeserializer.cs" />
+    <Compile Include="Deserialization\RemoveEntityMessageDeserializer.cs" />
+    <Compile Include="Deserialization\EditAttributesMessageDeserializer.cs" />
     <Compile Include="Serialization\AttributeSerializer.cs" />
     <Compile Include="Deserialization\AttributeTypeDeserializerFactory.cs" />
     <Compile Include="Serialization\AttributeTypeSerializerFactory.cs" />
