@@ -27,13 +27,13 @@ namespace WTProtocol
         public override void Deserialize(ref MessageBase deserializedMessage)
         {
             uint sceneID = ReadVLE(); // Currently not used
-            uint entityID = ReadVLE();
+            string entityID = ReadGuidAsVLE();
             byte temporary = ReadByte(); // Currently not used in FiVES
             byte[] componentBytes = GetRemainingBytes();
             Dictionary<string, object> entityInfo = new ComponentDeserializer(componentBytes).Deserialize();
 
             // This is an attempt to convert the Tundra int IDs to the FiVES GUID format
-            entityInfo["guid"] = new Guid(entityID, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).ToString();
+            entityInfo["guid"] = entityID;
             entityInfo["owner"] = new Guid().ToString();
             deserializedMessage.Parameters.Add(entityInfo);
         }

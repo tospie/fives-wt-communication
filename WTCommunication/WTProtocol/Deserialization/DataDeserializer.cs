@@ -225,5 +225,19 @@ namespace WTProtocol
                 }
             }
         }
+
+        /// <summary>
+        /// Reads VLE value which represents an ID and uses the 4 byte representation of the ID to create
+        /// a GUID, as expected by FiVES for ID
+        /// </summary>
+        /// <returns>Next 8 to 32 bit as GUID</returns>
+        protected string ReadGuidAsVLE()
+        {
+            uint longID = ReadVLE();
+            byte[] guid = new byte[16];
+            byte[] longIdBytes = BitConverter.GetBytes(longID);
+            Array.Copy(longIdBytes, guid, 4);
+            return new Guid(guid).ToString();
+        }
     }
 }
