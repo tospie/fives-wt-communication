@@ -21,6 +21,7 @@ using FIVES;
 using System.IO;
 using ClientManagerPlugin;
 using KIARA;
+using WTProtocol;
 
 namespace WTCommunicationPlugin
 {
@@ -84,10 +85,40 @@ namespace WTCommunicationPlugin
             };
         }
 
-        private void EditAttributes(string entityGuid, int componentId, byte[] attributeData)
+        private void EditAttributes(string entityGuid, List<ComponentUpdate> updatedComponents)
         {
             Entity entity = World.Instance.FindEntity(entityGuid);
-            entity[componentName][attributeName].Suggest(value);
+            foreach (ComponentUpdate c in updatedComponents)
+            {
+                TundraComponent updatedComponent = getTundraComponentById(entity, (int)c.componentId);
+                deserializeAttributeValues(c.attributeData, updatedComponent, entity);
+            }
+        }
+
+        private TundraComponent getTundraComponentById(Entity entity, int componentId)
+        {
+            Component componentWithId = getEntityComponentById(entity, componentId);
+            string componentName = componentWithId.Definition.Name;
+            return TundraComponentMap.Instance.FindComponent(componentName);
+        }
+
+        private Component getEntityComponentById(Entity entity, int componentId)
+        {
+            foreach (Component c in entity.Components)
+            {
+                if (c.Definition.ContainsAttributeDefinition("componentID")
+                    && (uint)entity[c.Definition.Name]["componentID"].Value == (uint)componentId)
+                    return c;
+            }
+
+            throw new ComponentAccessException("No Component with Tundra ID " + componentId + " set in entity "
+                + entity.Guid);
+        }
+
+        private void deserializeAttributeValues(byte[] attributeData, TundraComponent component, Entity entity)
+        {
+            var d = new AttributeUpdateDeserializer(attributeData, component, entity);
+            d.DeserializeAttributeUpdate();
         }
 
         private UInt32 NumConnectedClients = 0;
