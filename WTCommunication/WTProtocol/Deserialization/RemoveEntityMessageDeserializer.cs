@@ -26,7 +26,7 @@ namespace WTProtocol
         public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
         {
             uint sceneID = ReadVLE();
-            uint entityID = ReadVLE();
+            string entityID = ReadGuidAsVLE();
             deserializedMessage.Parameters.Add(entityID);
         }
     }
