@@ -1,5 +1,4 @@
-﻿using FIVES;
-// This file is part of FiVES.
+﻿// This file is part of FiVES.
 //
 // FiVES is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,6 +12,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with FiVES.  If not, see <http://www.gnu.org/licenses/>.
+using FIVES;
 using System;
 using System.Collections.Generic;
 using System.Linq;
