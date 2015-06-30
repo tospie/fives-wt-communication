@@ -33,6 +33,7 @@ namespace WTProtocol
         /// <param name="name">Name of the attribute type that should be deserialized</param>
         /// <param name="stream">Byte stream of the incoming message</param>
         /// <param name="byteIndex">current byte index of the message deserializer within the stream</param>
+        /// <param name="bitIndex">Current bit index of the message deserializer within the stream</param>
         /// <returns>The deserializer of the respective attribute type</returns>
         public static AttributeTypeDeserializer GetDeserializer(string name, byte[] stream, int byteIndex, int bitIndex)
         {

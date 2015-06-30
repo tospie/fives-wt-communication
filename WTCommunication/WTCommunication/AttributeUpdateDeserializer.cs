@@ -21,11 +21,23 @@ using WTProtocol;
 
 namespace WTCommunicationPlugin
 {
+    /// <summary>
+    /// An attribute update from WebTundra requires the instance of an component within an entity being known. Because
+    /// of that, the message will pass the binary encodet attribute updates to the SINFONI service implementation that
+    /// then finalizes deserialization within the plugin
+    /// </summary>
     public class AttributeUpdateDeserializer : DataDeserializer
     {
         private Entity UpdatedEntity;
         private TundraComponent UpdatedComponent;
 
+        /// <summary>
+        /// Constructor. Receives the binary encodet attribute updates and writes the deserialized values into the
+        /// entity's actual attribute
+        /// </summary>
+        /// <param name="inputStream">Binary encoded attribute updates</param>
+        /// <param name="updatedComponent">TundraComponent of which attributes were updates</param>
+        /// <param name="updatedEntity">Entity of which attributes were updates</param>
         public AttributeUpdateDeserializer(byte[] inputStream, TundraComponent updatedComponent, Entity updatedEntity)
             : base(inputStream)
         {
@@ -33,6 +45,9 @@ namespace WTCommunicationPlugin
             UpdatedComponent = updatedComponent;
         }
 
+        /// <summary>
+        /// Deserializes the provided binary encoded attribute updates
+        /// </summary>
         public void DeserializeAttributeUpdate()
         {
             if (ReadBits(1) == 0)
