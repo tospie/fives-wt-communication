@@ -49,6 +49,8 @@ namespace WTProtocol
                     new AttributeDeserializer(attributeDataBlock).DeserializeAttributes(componentTypeName);
                 attributes.Add("componentID", componentID);
                 components.Add(componentTypeName, attributes);
+                // We have to manually move the byte pointer here as it is not passed to the attribute deserializer
+                byteIndex += (int)attributeDataBlockSize;
             }
             return components;
         }
