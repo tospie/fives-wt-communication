@@ -25,6 +25,8 @@ namespace WTProtocol
     {
         protected MemoryStream dataView = new MemoryStream();
         protected BinaryWriter writer;
+        protected int bitIndex = 0;
+        protected int byteIndex = 0;
 
         public DataSerializer()
         {
@@ -58,42 +60,75 @@ namespace WTProtocol
 
         protected void AddValue(byte value)
         {
-            using (var ms = new MemoryStream())
+            if (bitIndex == 0)
             {
-                writer.Write(value);
+                using (var ms = new MemoryStream())
+                {
+                    writer.Write(value);
+                    byteIndex++;
+                }
+            }
+            else
+            {
+                AddBits(8, value);
             }
         }
 
         protected void AddValue(UInt16 value)
         {
-            using (var ms = new MemoryStream())
+            if (bitIndex == 0)
             {
-                byte[] valueAsByteArray = BitConverter.GetBytes(value);
-                writer.Write(valueAsByteArray);
+                using (var ms = new MemoryStream())
+                {
+                    byte[] valueAsByteArray = BitConverter.GetBytes(value);
+                    writer.Write(valueAsByteArray);
+                    byteIndex += 2;
+                }
+            }
+            else
+            {
+                AddBits(16, value);
             }
         }
 
         protected void AddValue(uint value)
         {
-            using (var ms = new MemoryStream())
+            if (bitIndex == 0)
             {
-                byte[] valueAsByteArray = BitConverter.GetBytes(value);
-                writer.Write(valueAsByteArray);
+                using (var ms = new MemoryStream())
+                {
+                    byte[] valueAsByteArray = BitConverter.GetBytes(value);
+                    writer.Write(valueAsByteArray);
+                    byteIndex += 4;
+                }
+            }
+            else
+            {
+                AddBits(32, value);
             }
         }
 
         protected void AddValue(int value)
         {
-            using (var ms = new MemoryStream())
-            {
-                byte[] valueAsByteArray = BitConverter.GetBytes(value);
+            byte[] valueAsByteArray = BitConverter.GetBytes(value);
 
-                // We may have to flip byte order as ints are stored little endian
-                if (!BitConverter.IsLittleEndian)
+            // We may have to flip byte order as ints are stored little endian
+            if (!BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(valueAsByteArray);
+            }
+
+            if (bitIndex == 0)
+            {
+                using (var ms = new MemoryStream())
                 {
-                    Array.Reverse(valueAsByteArray);
+                    writer.Write(valueAsByteArray);
+                    byteIndex += 4;
                 }
-                writer.Write(valueAsByteArray);
+            }
+            else
+            {
+                AddArrayBuffer(valueAsByteArray);
             }
         }
 
@@ -111,7 +146,7 @@ namespace WTProtocol
             using (var ms = new MemoryStream())
             {
                 byte[] valueAsByteArray = System.Text.Encoding.UTF8.GetBytes(value);
-                writer.Write(valueAsByteArray);
+                AddArrayBuffer(valueAsByteArray);
             }
         }
 
@@ -119,6 +154,40 @@ namespace WTProtocol
         {
             AddValue(stringLength);
             AddValue(stringValue);
+        }
+
+        protected void AddArrayBuffer(byte[] buffer)
+        {
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                AddValue(buffer[i]);
+            }
+        }
+
+        protected void AddBits(int bitCount, uint value)
+        {
+            var shift = 0;
+            byte currentByte = dataView.ToArray()[byteIndex];
+            while (bitCount > 0)
+            {
+                if ((value & (1 << shift)) != 0)
+                    currentByte |= (byte)(1 << bitIndex);
+                else
+                    currentByte &= (byte)(0xff - (1 << bitIndex));
+
+                shift++;
+                bitCount--;
+                bitIndex++;
+
+                if (bitIndex > 7)
+                {
+                    bitIndex = 0;
+                    dataView.WriteByte((byte)currentByte);
+                    byteIndex++;
+                    if (bitCount > 0)
+                        currentByte = dataView.ToArray()[byteIndex];
+                }
+            }
         }
 
         protected uint getIntIdFromGuid(Guid guid)
