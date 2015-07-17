@@ -167,7 +167,7 @@ namespace WTProtocol
         protected void AddBits(int bitCount, uint value)
         {
             var shift = 0;
-            byte currentByte = dataView.ToArray()[byteIndex];
+            byte currentByte = dataView.Length > 0 ? dataView.ToArray()[byteIndex] : (byte)0;
             while (bitCount > 0)
             {
                 if ((value & (1 << shift)) != 0)
@@ -185,8 +185,16 @@ namespace WTProtocol
                     dataView.WriteByte((byte)currentByte);
                     byteIndex++;
                     if (bitCount > 0)
-                        currentByte = dataView.ToArray()[byteIndex];
+                        currentByte = 0;
                 }
+            }
+
+            if (this.bitIndex != 0)
+            {
+                this.dataView.WriteByte(currentByte);
+                // When byte was not fully written yet, keep writing position at the current
+                // byte
+                this.dataView.Position = this.dataView.Position - 1;
             }
         }
 
