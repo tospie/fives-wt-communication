@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\DomainModel.dll</HintPath>
+    </Reference>
     <Reference Include="FiVESMath">
       <HintPath>..\Libs\FiVESMath.dll</HintPath>
     </Reference>
