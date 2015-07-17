@@ -55,6 +55,7 @@
     <Compile Include="Deserialization\MessageDeserializerFactory.cs" />
     <Compile Include="Deserialization\RemoveEntityMessageDeserializer.cs" />
     <Compile Include="Deserialization\EditAttributesMessageDeserializer.cs" />
+    <Compile Include="Serialization\AttributeDatablockSerializer.cs" />
     <Compile Include="Serialization\AttributeSerializer.cs" />
     <Compile Include="Deserialization\AttributeTypeDeserializerFactory.cs" />
     <Compile Include="Serialization\AttributeTypeSerializerFactory.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Deserialization\DataDeserializer.cs" />
     <Compile Include="Serialization\DataSerializer.cs" />
     <Compile Include="Deserialization\LoginMessageDeserializer.cs" />
+    <Compile Include="Serialization\EditAttributesMessageSerializer.cs" />
     <Compile Include="Serialization\LoginMessageSerializer.cs" />
     <Compile Include="Deserialization\MessageDeserializer.cs" />
     <Compile Include="Serialization\MessageSerializer.cs" />
