@@ -9,7 +9,7 @@ The set of of provided Libraries allow communication with WebTundra browser clie
 The Serialization and protocol code is an extension to the SINFONI Middleware Project, that is published under the GNU LGPL v3 License:
 * https://github.com/tospie/SINFONI
 
-The Plugins and data model implementations are supposed to be run in FiVES, which is published under the GNU LGPL License:
+The Plugins and data model implementations are supposed to be run in FiVES, which is published under the GNU LGPL v3 License:
 * https://github.com/fives-team/fives
 
 *FiVES, Tundra and SINFONI are part of the project __FIWARE__ of the European Union. Please find more information at __http://www.fiware.org__ . Tundra and FiVES are published there as reference implementation (Tundra) and alternative implementation (FiVES) of the Synchronization Generic Enabler*
