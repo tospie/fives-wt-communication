@@ -57,5 +57,15 @@ namespace WTProtocol
             TundraAttributeType attributeType = AttributeMap.Attributes.Single(a => a.Name == typeName);
             Attributes.Add(new TundraAttribute(name, attributeType));
         }
+
+        /// <summary>
+        /// Returns the Tundra Attribute Type of an attribute of this component
+        /// </summary>
+        /// <param name="name">Name of the attribute of which type should be returned</param>
+        /// <returns>Tundra Attribute Type object of the respective attribute</returns>
+        public TundraAttributeType GetTypeOfAttribute(string name)
+        {
+            return Attributes.Single(a => a.Name == name).Type;
+        }
     }
 }
