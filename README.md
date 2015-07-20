@@ -32,3 +32,32 @@ This repo comes with all code files needed to compile the binary version of the 
  4. Make sure that *FiVES.exe.cfg* is located in the same directory as *FiVES.exe*
  5. Make sure that the other config files are contained in the same directory as the respective plugins
  6. Run FiVES* as usual. FiVES will launch with all plugins needed for WebTundra to connect
+
+## Limitations
+
+The Tundra protocol is a complex wire protocol that is closely coupled to the Tundra ECA model implementation. This means in particular that components and attribute types have to match the exact implementation of the Tundra types to be serialized and deserialized correctly.
+
+Because of that, this set of libraries is not - and does not intend to be - a full replacement of Tundra as synchronization server for WebTundra. It does rather provide a minimal set of message types and component types that are supported to run synchronized 3D applications based on WebTundra and FiVES.
+
+You are of course encouraged to extend the set of supported message types and data as you need in your application.
+
+Currently supported are the following mechanisms:
+
+* __Data Serialization__ : Serialization and Deserialization of the base types: 
+  * _1: string_
+  * _2: int_
+  * _3: real_
+  * _8: bool_
+  * _11: assetReference_
+  * _12: assetReferenceList_
+  * _13: entityReference_
+  * _16: transform_
+* __Components__ :
+  * _17: Mesh_
+  * _20: Placeable_
+* __Message Types__ :
+  * _100: Login_
+  * _101: LoginReply_
+  * _110: CreateEntity_
+  * _113: EditAttributes_
+  * _116: RemoveEntity_
