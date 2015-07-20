@@ -1,5 +1,6 @@
 obj/
 bin/
+Build/
 *.userprefs
 *.pidb
 *test-results*
@@ -17,5 +18,4 @@ Core/PluginManager/TestPlugins
 *.vsp
 *.psess
 *.licenseheader
-WebClient/resources/proprietary
 TestResult.xml
