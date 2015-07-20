@@ -86,6 +86,7 @@
     <Compile Include="Serialization\LoginMessageSerializer.cs" />
     <Compile Include="Deserialization\MessageDeserializer.cs" />
     <Compile Include="Serialization\MessageSerializer.cs" />
+    <Compile Include="Serialization\RemoveEntityMessageSerializer.cs" />
     <Compile Include="TundraAttribute.cs" />
     <Compile Include="TundraComponent.cs" />
     <Compile Include="TundraComponentMap.cs" />

@@ -48,7 +48,7 @@ namespace WTProtocol
                 case "tundra.login": messageID = GetLoginMessageType(currentMessage.Type); break;
                 case "objectsync.receiveNewObjects": messageID = 110; break;
                 case "objectsync.receiveObjectUpdates": messageID = 113; break;
-                case "objectSync.removeObject": messageID = 116; break;
+                case "objectsync.removeObject": messageID = 116; break;
                 // This is a hack. There is currently only one reply-message type which is the login-reply.
                 // We thus blindly assume that any response sent to a Tundra remote end is a login reply.
                 default: if (currentMessage.Type == MessageType.RESPONSE) messageID = 101; break;
@@ -63,6 +63,7 @@ namespace WTProtocol
                 case "objectsync.receiveNewObjects": writer.Write(new CreateEntityMessageSerializer(currentMessage).Serialize()); break;
                 case "tundra.login": break;
                 case "objectsync.receiveObjectUpdates": writer.Write(new EditAttributesMessageSerializer(currentMessage).Serialize()); break;
+                case "objectsync.removeObject": writer.Write(new RemoveEntityMessageSerializer(currentMessage).Serialize()); break;
                 // Same hack as above. Treat every response as login response
                 default: if (currentMessage.Type == MessageType.RESPONSE) writer.Write(new LoginMessageSerializer(currentMessage).Serialize()); break;
             }
