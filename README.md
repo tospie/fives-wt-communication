@@ -23,3 +23,12 @@ This repository contains of the complete project in its root folder, and the fol
 * **WTComponents** : Implementation of FiVES Components that match the Tundra ECA Domain Model
 * **WTProtocol** : The SINFONI Protocol that implements Tundra Binary serialization and a subset of the Tundra Message Types
 
+## Quickstart Guide
+
+This repo comes with all code files needed to compile the binary version of the respective FiVES plugins and protocols, as well as configuration files for FiVES.
+ 1. Clone this repository and build the entire solution.
+ 2. Find your compiled plugins together with all dependencies and configuration files in the */Binaries* folder
+ 3. Copy these into the *Plugin Path* of your FiVES deployment. Allow overwriting existing files.
+ 4. Make sure that *FiVES.exe.cfg* is located in the same directory as *FiVES.exe*
+ 5. Make sure that the other config files are contained in the same directory as the respective plugins
+ 6. Run FiVES* as usual. FiVES will launch with all plugins needed for WebTundra to connect
