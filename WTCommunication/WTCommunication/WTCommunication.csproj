@@ -41,14 +41,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\DomainModel.dll</HintPath>
     </Reference>
-    <Reference Include="KIARA">
-      <HintPath>..\Libs\KIARA.dll</HintPath>
-    </Reference>
-    <Reference Include="KIARAPlugin">
-      <HintPath>..\Libs\KIARAPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="PluginManager">
       <HintPath>..\Libs\PluginManager.dll</HintPath>
+    </Reference>
+    <Reference Include="SINFONI">
+      <HintPath>..\Libs\SINFONI.dll</HintPath>
+    </Reference>
+    <Reference Include="SINFONIPlugin">
+      <HintPath>..\Libs\SINFONIPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

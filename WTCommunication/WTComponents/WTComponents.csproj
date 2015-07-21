@@ -37,15 +37,14 @@
     <Reference Include="FiVESMath">
       <HintPath>..\Libs\FiVESMath.dll</HintPath>
     </Reference>
-    <Reference Include="KIARA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\KIARA.dll</HintPath>
-    </Reference>
-    <Reference Include="KIARAPlugin">
-      <HintPath>..\Libs\KIARAPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="PluginManager">
       <HintPath>..\Libs\PluginManager.dll</HintPath>
+    </Reference>
+    <Reference Include="SINFONI">
+      <HintPath>..\Libs\SINFONI.dll</HintPath>
+    </Reference>
+    <Reference Include="SINFONIPlugin">
+      <HintPath>..\Libs\SINFONIPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
