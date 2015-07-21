@@ -23,7 +23,7 @@ namespace WTProtocol
     {
         public RemoveEntityMessageDeserializer(byte[] inputStream) : base(inputStream) { }
 
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
+        public override void Deserialize(ref SINFONI.MessageBase deserializedMessage)
         {
             uint sceneID = ReadVLE();
             string entityID = ReadGuidAsVLE();
