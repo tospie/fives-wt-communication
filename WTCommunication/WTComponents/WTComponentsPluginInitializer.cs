@@ -44,7 +44,7 @@ namespace WTComponentsPlugin
         {
 
             get { return new List<string>{
-                "KIARA" // For amending KIARA IDL with definition of Transforsm struct
+                "SINFONI" // For amending SINFONI IDL with definition of Transforsm struct
             }; }
         }
 
@@ -104,7 +104,7 @@ namespace WTComponentsPlugin
         private void ReadIDL()
         {
             string idlContent = File.ReadAllText("tundraComponents.kiara");
-            KIARAPlugin.KIARAServerManager.Instance.KiaraServer.AmendIDL(idlContent);
+            SINFONIPlugin.SINFONIServerManager.Instance.SinfoniServer.AmendIDL(idlContent);
         }
     }
 }

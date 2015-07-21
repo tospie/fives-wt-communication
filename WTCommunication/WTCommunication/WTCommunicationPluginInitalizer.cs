@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 using FIVES;
 using System.IO;
 using ClientManagerPlugin;
-using KIARA;
+using SINFONI;
 using WTProtocol;
 
 namespace WTCommunicationPlugin
@@ -50,7 +50,7 @@ namespace WTCommunicationPlugin
                 return new List<string>
                 {
                     "WebTundraComponents",  // Needed to load all WT specific components and IDL
-                    "KIARA",          // Needed for tundra communication service definition
+                    "SINFONI",          // Needed for tundra communication service definition
                     "ClientManager"         // Needed for service registration and binding
                 };
             }
@@ -63,7 +63,7 @@ namespace WTCommunicationPlugin
         private void LoadIdl()
         {
             string idlContents = File.ReadAllText("tundraCommunication.kiara");
-            KIARAPlugin.KIARAServerManager.Instance.KiaraServer.AmendIDL(idlContents);
+            SINFONIPlugin.SINFONIServerManager.Instance.SinfoniServer.AmendIDL(idlContents);
         }
 
         private void RegisterService()

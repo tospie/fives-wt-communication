@@ -22,9 +22,9 @@ namespace WTProtocol
     public class CreateComponentsMessageDeserializer : MessageDeserializer
     {
         public CreateComponentsMessageDeserializer(byte[] inputStream) : base(inputStream) {}
-        private KIARA.MessageBase currentMessage;
+        private SINFONI.MessageBase currentMessage;
 
-        public override void Deserialize(ref KIARA.MessageBase deserializedMessage)
+        public override void Deserialize(ref SINFONI.MessageBase deserializedMessage)
         {
             currentMessage = deserializedMessage;
             uint sceneID = ReadVLE();

@@ -38,8 +38,8 @@
     <Reference Include="FiVESMath">
       <HintPath>..\Libs\FiVESMath.dll</HintPath>
     </Reference>
-    <Reference Include="KIARA">
-      <HintPath>..\Libs\KIARA.dll</HintPath>
+    <Reference Include="SINFONI">
+      <HintPath>..\Libs\SINFONI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
